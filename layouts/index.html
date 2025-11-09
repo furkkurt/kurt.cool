@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="{{ .Site.LanguageCode }}">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ .Site.Title }}</title>
+    <link rel="stylesheet" href="{{ "css/main.css" | relURL }}">
+</head>
+<body>
+    <div class="container">
+        <header class="site-header">
+            <h1 class="site-title">{{ .Site.Title }}</h1>
+            <nav class="main-nav">
+                {{ range .Site.Menus.main }}
+                <a href="{{ .URL }}" class="nav-link">{{ .Name }}</a>
+                {{ end }}
+            </nav>
+        </header>
+
+        <main class="home-content">
+            <div class="main-layout">
+                <!-- Latest Post Section -->
+                <section class="latest-post-section">
+                    <h2 class="section-label">Latest Post</h2>
+                    {{ $latestPost := index (where .Site.RegularPages "Params.categories" "intersect" (slice "blog")) 0 }}
+                    {{ if $latestPost }}
+                    <article class="latest-post-card">
+                        <a href="{{ $latestPost.Permalink }}" class="latest-post-link">
+                            <h3 class="latest-post-title">{{ $latestPost.Title }}</h3>
+                            <time class="latest-post-date">{{ $latestPost.Date.Format "Jan 2, 2006" }}</time>
+                            <p class="latest-post-excerpt">{{ $latestPost.Summary | truncate 150 "..." }}</p>
+                        </a>
+                    </article>
+                    {{ else }}
+                    <div class="latest-post-card">
+                        <p>No posts yet. Check back soon!</p>
+                    </div>
+                    {{ end }}
+                </section>
+
+                <!-- Tags Section -->
+                <section class="tags-section">
+                    <h2 class="section-label">Tags</h2>
+                    <div class="tags-container">
+                        {{ $allTags := slice }}
+                        {{ range where .Site.RegularPages "Params.tags" "!=" nil }}
+                            {{ range .Params.tags }}
+                                {{ $allTags = $allTags | append . }}
+                            {{ end }}
+                        {{ end }}
+                        {{ $uniqueTags := $allTags | uniq }}
+                        {{ range $uniqueTags }}
+                        <a href="/tags/{{ . | urlize }}/" class="tag-item">{{ . }}</a>
+                        {{ end }}
+                        {{ if not $uniqueTags }}
+                        <p class="no-tags">No tags yet</p>
+                        {{ end }}
+                    </div>
+                </section>
+
+                <!-- Quote of the Day Section -->
+                <section class="quote-section">
+                    <h2 class="section-label">Quote of the Day</h2>
+                    <div class="quote-container">
+                        <button class="quote-nav" id="quotePrev" disabled>‹‹</button>
+                        <div class="quote-content">
+                            <p class="quote-text" id="quoteText">Loading quote...</p>
+                        </div>
+                        <button class="quote-nav" id="quoteNext">››</button>
+                    </div>
+                </section>
+            </div>
+        </main>
+
+        <footer class="site-footer">
+            <p>&copy; {{ now.Year }} {{ .Site.Title }} | Industrial Y2K</p>
+            <div class="fireplace-container">
+                <img src="{{ "fireplace.gif" | relURL }}" alt="Cozy Fireplace" class="fireplace-gif">
+            </div>
+            <audio id="backgroundMusic" loop autoplay>
+                <source src="{{ "bgSound.mp3" | relURL }}" type="audio/mpeg">
+                Your browser does not support the audio element.
+            </audio>
+        </footer>
+    </div>
+
+    <script src="{{ "js/main.js" | relURL }}"></script>
+</body>
+</html>

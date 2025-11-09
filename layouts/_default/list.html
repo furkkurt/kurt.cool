@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="{{ .Site.LanguageCode }}">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ .Title }} - {{ .Site.Title }}</title>
+    <link rel="stylesheet" href="{{ "css/main.css" | relURL }}">
+</head>
+<body>
+    <div class="container">
+        <header class="site-header">
+            <h1 class="site-title"><a href="{{ "/" | relURL }}">{{ .Site.Title }}</a></h1>
+            <nav class="main-nav">
+                {{ range .Site.Menus.main }}
+                <a href="{{ .URL }}" class="nav-link">{{ .Name }}</a>
+                {{ end }}
+            </nav>
+        </header>
+
+        <main class="content">
+            <h1 class="page-title">{{ .Title }}</h1>
+            
+            <div class="posts-list">
+                {{ range .Pages }}
+                <article class="post-preview">
+                    <h2 class="post-preview-title">
+                        <a href="{{ .Permalink }}">{{ .Title }}</a>
+                    </h2>
+                    {{ if .Date }}
+                    <time class="post-preview-date">{{ .Date.Format "Jan 2, 2006" }}</time>
+                    {{ end }}
+                    {{ if .Summary }}
+                    <p class="post-preview-summary">{{ .Summary }}</p>
+                    {{ end }}
+                    <a href="{{ .Permalink }}" class="read-more">Read More →</a>
+                </article>
+                {{ end }}
+            </div>
+        </main>
+
+        <footer class="site-footer">
+            <p>&copy; {{ now.Year }} {{ .Site.Title }} | Industrial Y2K</p>
+            <div class="fireplace-container">
+                <img src="{{ "fireplace.gif" | relURL }}" alt="Cozy Fireplace" class="fireplace-gif">
+            </div>
+        </footer>
+    </div>
+    <script src="{{ "js/main.js" | relURL }}"></script>
+</body>
+</html>
