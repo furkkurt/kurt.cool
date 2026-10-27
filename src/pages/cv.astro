@@ -1,0 +1,254 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Navigation from '../components/Navigation.astro';
+import bgImage from '../assets/bg.jpg';
+---
+
+<Layout title="CV & Portfolio - Ahmet Furkan Kurt" description="Ahmet Furkan Kurt's Resume and Engineering Project Portfolio">
+	<Navigation />
+	
+	<!-- Background -->
+	<div id="page-bg">
+		<img src={bgImage.src} alt="" id="bg-image" />
+		<div class="overlay"></div>
+	</div>
+
+	<div class="min-h-screen pt-20 relative">
+		<div class="max-w-7xl mx-auto px-6 py-8">
+			<!-- Header with Document Switcher & Download Buttons -->
+			<div class="mb-6 glass-soft p-6 flex flex-col gap-5">
+				<div class="flex justify-between items-center flex-wrap gap-4">
+					<div>
+						<h1 class="text-3xl font-bold" style="color: white;">Resume &amp; Engineering Portfolio</h1>
+						<p class="text-sm secondary-text mt-1">Preview documents interactively below or download print-ready A4 PDFs</p>
+					</div>
+					<div class="flex flex-wrap gap-3">
+						<a
+							href="/resume.pdf"
+							download="Ahmet_Furkan_Kurt_Resume_EN.pdf"
+							class="btn-primary-glow px-4 py-2.5 rounded-lg font-medium transition-colors shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 transition-all inline-flex items-center gap-2 text-sm"
+							style="background-color: var(--accent-primary); color: white;"
+						>
+							<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+								<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+							</svg>
+							Resume PDF (EN)
+						</a>
+						<a
+							href="/Ahmet_Furkan_Kurt_CV_TR.pdf"
+							download="Ahmet_Furkan_Kurt_CV_TR.pdf"
+							class="px-4 py-2.5 rounded-lg font-medium transition-all shadow hover:shadow-lg transform hover:-translate-y-0.5 inline-flex items-center gap-2 text-sm"
+							style="background-color: rgba(255,255,255,0.16); border: 1px solid rgba(255,255,255,0.35); color: white;"
+						>
+							<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+								<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+							</svg>
+							CV PDF (TR)
+						</a>
+						<a
+							href="/Ahmet_Furkan_Kurt_Portfolio_EN.pdf"
+							download="Ahmet_Furkan_Kurt_Portfolio_EN.pdf"
+							class="px-4 py-2.5 rounded-lg font-medium transition-all shadow hover:shadow-lg transform hover:-translate-y-0.5 inline-flex items-center gap-2 text-sm"
+							style="background-color: rgba(255,255,255,0.16); border: 1px solid rgba(255,255,255,0.35); color: white;"
+						>
+							<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+								<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+							</svg>
+							Portfolio PDF (EN)
+						</a>
+						<a
+							href="/Ahmet_Furkan_Kurt_Portfoy_TR.pdf"
+							download="Ahmet_Furkan_Kurt_Portfoy_TR.pdf"
+							class="px-4 py-2.5 rounded-lg font-medium transition-all shadow hover:shadow-lg transform hover:-translate-y-0.5 inline-flex items-center gap-2 text-sm"
+							style="background-color: rgba(255,255,255,0.16); border: 1px solid rgba(255,255,255,0.35); color: white;"
+						>
+							<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+								<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+							</svg>
+							Portföy PDF (TR)
+						</a>
+					</div>
+				</div>
+
+				<!-- Interactive Viewer Tabs -->
+				<div class="flex flex-wrap gap-2 pt-3 border-t border-white/20">
+					<button data-doc="/resume.html" class="doc-tab active-doc-tab px-4 py-2 rounded-lg text-xs md:text-sm font-semibold transition-all cursor-pointer">
+						Resume Preview (EN)
+					</button>
+					<button data-doc="/resume_tr.html" class="doc-tab px-4 py-2 rounded-lg text-xs md:text-sm font-semibold transition-all cursor-pointer">
+						Özgeçmiş Önizleme (TR)
+					</button>
+					<button data-doc="/portfolio_en.html" class="doc-tab px-4 py-2 rounded-lg text-xs md:text-sm font-semibold transition-all cursor-pointer">
+						Engineering Portfolio (EN)
+					</button>
+					<button data-doc="/portfolio_tr.html" class="doc-tab px-4 py-2 rounded-lg text-xs md:text-sm font-semibold transition-all cursor-pointer">
+						Proje Portföyü (TR)
+					</button>
+				</div>
+			</div>
+
+			<!-- Resume Display -->
+			<div class="cv-preview glass-soft rounded-lg shadow-xl overflow-hidden" style="max-width: 21cm; margin: 0 auto;">
+				<iframe
+					id="doc-preview-iframe"
+					src="/resume.html"
+					class="resume-iframe w-full border-0"
+					title="Ahmet Furkan Kurt Resume & Portfolio"
+					style="display: block; height: 90vh; border: none; background: white;"
+				></iframe>
+			</div>
+		</div>
+	</div>
+</Layout>
+
+<script>
+	const tabs = document.querySelectorAll('.doc-tab');
+	const iframe = document.getElementById('doc-preview-iframe') as HTMLIFrameElement | null;
+
+	tabs.forEach((tab) => {
+		tab.addEventListener('click', () => {
+			const docUrl = tab.getAttribute('data-doc');
+			if (iframe && docUrl) {
+				iframe.src = docUrl;
+			}
+			tabs.forEach((t) => t.classList.remove('active-doc-tab'));
+			tab.classList.add('active-doc-tab');
+		});
+	});
+</script>
+
+<style>
+	/* Background layer - same as home page */
+	#page-bg {
+		position: fixed;
+		inset: 0;
+		z-index: 0;
+		overflow: hidden;
+		pointer-events: none;
+	}
+	
+	#bg-image {
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+		transform: translate(-50%, -50%) scale(1.0);
+		will-change: transform;
+		z-index: 1;
+	}
+	
+	#page-bg .overlay {
+		position: absolute;
+		inset: 0;
+		background-color: rgba(0, 0, 0, 0.68);
+		pointer-events: none;
+		z-index: 2;
+	}
+	
+	main, nav, section, footer {
+		position: relative;
+		z-index: 10;
+	}
+	
+	/* Glass overlay system with glow animation */
+	.glass-soft {
+		background: rgba(255, 255, 255, 0.12);
+		backdrop-filter: blur(12px);
+		border-radius: 1rem;
+		border: 1px solid rgba(255, 255, 255, 0.3);
+		box-shadow: 0 0 20px rgba(255, 255, 255, 0.1), 0 0 40px rgba(255, 255, 255, 0.05);
+		animation: card-glow-pulse 4s ease-in-out infinite;
+	}
+	
+	@keyframes card-glow-pulse {
+		0%, 100% {
+			box-shadow: 0 0 20px rgba(255, 255, 255, 0.1), 0 0 40px rgba(255, 255, 255, 0.05);
+		}
+		50% {
+			box-shadow: 0 0 25px rgba(255, 255, 255, 0.15), 0 0 50px rgba(255, 255, 255, 0.08), 0 0 60px rgba(255, 255, 255, 0.03);
+		}
+	}
+	
+	.secondary-text {
+		color: rgba(255, 255, 255, 0.65) !important;
+	}
+
+	.doc-tab {
+		background: rgba(255, 255, 255, 0.1);
+		border: 1px solid rgba(255, 255, 255, 0.25);
+		color: rgba(255, 255, 255, 0.8);
+	}
+
+	.doc-tab:hover {
+		background: rgba(255, 255, 255, 0.2);
+		color: white;
+	}
+
+	.active-doc-tab {
+		background: var(--accent-primary) !important;
+		border-color: var(--accent-primary) !important;
+		color: white !important;
+		box-shadow: 0 0 12px var(--accent-primary);
+	}
+	
+	/* Button glows with animation */
+	.btn-primary-glow {
+		box-shadow: 0 0 15px var(--accent-primary), 0 0 30px var(--accent-primary);
+		transition: box-shadow 0.3s ease;
+		animation: glow-pulse-primary 3s ease-in-out infinite;
+	}
+	
+	.btn-primary-glow:hover {
+		box-shadow: 0 0 20px var(--accent-primary), 0 0 40px var(--accent-primary), 0 0 60px var(--accent-primary);
+		animation: none;
+	}
+	
+	@keyframes glow-pulse-primary {
+		0%, 100% {
+			box-shadow: 0 0 15px var(--accent-primary), 0 0 30px var(--accent-primary);
+		}
+		50% {
+			box-shadow: 0 0 20px var(--accent-primary), 0 0 40px var(--accent-primary), 0 0 50px var(--accent-primary);
+		}
+	}
+	
+	/* CV Preview - No transforms allowed */
+	.cv-preview {
+		transform: none !important;
+		max-width: 21cm;
+		margin: 0 auto;
+	}
+	
+	.resume-iframe {
+		min-height: 1200px;
+		width: 100%;
+		max-width: 21cm;
+		display: block;
+		margin: 0 auto;
+		border: none;
+		transform: none !important;
+		zoom: 1 !important;
+	}
+	
+	@media (max-width: 21cm) {
+		.cv-preview {
+			width: 100%;
+			max-width: 100%;
+		}
+		
+		.resume-iframe {
+			width: 100%;
+			max-width: 100%;
+		}
+	}
+	
+	@media (max-width: 768px) {
+		.resume-iframe {
+			min-height: 1000px;
+			width: 100%;
+			height: auto;
+		}
+	}
+</style>

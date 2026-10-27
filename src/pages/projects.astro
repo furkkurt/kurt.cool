@@ -1,0 +1,432 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Navigation from '../components/Navigation.astro';
+import bgImage from '../assets/bg.jpg';
+
+interface GitHubRepo {
+	name: string;
+	description: string | null;
+	html_url: string;
+	language: string | null;
+	updated_at: string;
+	stargazers_count: number;
+	forks_count: number;
+}
+
+let repos: GitHubRepo[] = [];
+let error: string | null = null;
+
+try {
+	const response = await fetch('https://api.github.com/users/furkkurt/repos?sort=updated&per_page=100', {
+		headers: {
+			'Accept': 'application/vnd.github.v3+json',
+		},
+	});
+	
+	if (response.ok) {
+		repos = await response.json();
+		// Filter out forks and archived repos for cleaner display
+		repos = repos.filter(repo => !repo.name.includes('Uh oh') && !repo.name.toLowerCase().includes('test'));
+	} else {
+		error = 'Failed to fetch repositories';
+	}
+} catch (e) {
+	error = 'Error loading repositories';
+	console.error(e);
+}
+
+const getLanguageColor = (language: string | null): string => {
+	if (!language) return 'bg-gray-100 text-gray-800';
+	const colors: Record<string, string> = {
+		'JavaScript': 'bg-yellow-100 text-yellow-800',
+		'TypeScript': 'bg-blue-100 text-blue-800',
+		'HTML': 'bg-orange-100 text-orange-800',
+		'CSS': 'bg-purple-100 text-purple-800',
+		'Dart': 'bg-cyan-100 text-cyan-800',
+		'C#': 'bg-green-100 text-green-800',
+		'Python': 'bg-indigo-100 text-indigo-800',
+		'C++': 'bg-pink-100 text-pink-800',
+		'Rust': 'bg-amber-100 text-amber-900',
+		'Shell': 'bg-emerald-100 text-emerald-800',
+		'Astro': 'bg-orange-100 text-orange-800',
+	};
+	return colors[language] || 'bg-gray-100 text-gray-800';
+};
+
+const featuredProjects = [
+	{
+		id: "temple-engine",
+		category: "3D Graphics & Game Engine (B.Sc. Capstone)",
+		period: "2025 – 2026",
+		title: "Temple Engine — Web-Based 3D Game Engine & Visual Editor",
+		subtitle: "Full-featured browser 3D game engine, visual scene editor, and standalone HTML5 exporter",
+		stack: ["TypeScript", "Three.js (WebGL)", "FastAPI", "Python", "GLSL Shaders", "Vite", "SQLite"],
+		bullets: [
+			"Architected a decoupled Engine Core & Editor UI with a 60 FPS WebGL viewport, transform gizmos (translate/rotate/scale), Scene Hierarchy, Inspector, and Asset Browser.",
+			"Built a custom Terrain & Environment System supporting heightmap sculpting, multi-layer texture splatting, procedural skybox/fog, and real-time GPU particle emitters.",
+			"Implemented a FastAPI backend with JWT authentication, cloud project persistence, multi-format 3D asset pipeline (GLTF/GLB/OBJ), and one-click standalone HTML5 game export."
+		],
+		links: [
+			{ label: "Portfolio PDF (EN)", href: "/Ahmet_Furkan_Kurt_Portfolio_EN.pdf" }
+		]
+	},
+	{
+		id: "hand-gesture-hmi",
+		category: "Computer Vision & Real-Time HMI",
+		period: "2025",
+		title: "Real-Time Hand Gesture Recognition & Contactless OS Control",
+		subtitle: "30 FPS 3D hand landmark tracking and jitter-free OS cursor/event pipeline",
+		stack: ["Python", "OpenCV", "MediaPipe Hands 3D", "NumPy", "PyAutoGUI / X11"],
+		bullets: [
+			"Engineered a low-latency 30 FPS webcam pipeline extracting 21 3D hand landmarks per frame to enable contactless desktop navigation and command execution.",
+			"Designed scale-invariant gesture classification using Euclidean distance ratios normalized against palm size, combined with state hysteresis to prevent false triggers.",
+			"Eliminated sensor micro-jitter via an Exponential Moving Average (EMA) coordinate filter and dead-zone thresholding for smooth, sub-pixel cursor control on Linux X11."
+		],
+		links: []
+	},
+	{
+		id: "boutique-lavinia",
+		category: "Full-Stack Enterprise E-Commerce",
+		period: "2025 – 2026",
+		title: "Boutique Lavinia — Modular .NET 8 & Next.js 14 E-Commerce",
+		subtitle: "Multi-layered enterprise backend, RBAC admin suite, and SSR storefront",
+		stack: [".NET 8 Web API", "C#", "EF Core", "PostgreSQL", "Next.js 14", "TypeScript", "Tailwind CSS"],
+		bullets: [
+			"Designed a multi-project .NET 8 architecture (API, Core, Application, Infrastructure) utilizing Repository/Unit-of-Work patterns and JWT role-based access control.",
+			"Built dynamic product variant inventory tracking (size/color matrices), automated coupon/campaign validation rules, and multi-stage order lifecycle state machines.",
+			"Developed a responsive Next.js 14 App Router storefront and comprehensive Admin Analytics Dashboard with SSR metadata optimization."
+		],
+		links: []
+	},
+	{
+		id: "news-engine",
+		category: "Clean Architecture & CQRS Backend",
+		period: "2025 – 2026",
+		title: "NewsEngine (fikrimce.net) — .NET 10 CQRS Publishing Platform",
+		subtitle: "4-layer Clean Architecture digital media engine with MediatR pipelines",
+		stack: [".NET 10", "C#", "CQRS & MediatR", "FluentValidation", "EF Core 10", "Serilog", "Docker", "Nginx"],
+		bullets: [
+			"Architected a strict 4-layer Clean Architecture backend (Domain, Application, Infrastructure, WebAPI) separating read and write workloads via MediatR CQRS handlers.",
+			"Implemented automated FluentValidation pipeline behaviors, structured Serilog telemetry, and slug-indexed article query optimization.",
+			"Containerized the full stack with multi-stage Dockerfiles and deployed behind an Nginx reverse proxy with automated SSL."
+		],
+		links: []
+	},
+	{
+		id: "ashes-touch",
+		category: "Systems Programming & Custom Game Engine",
+		period: "2025 – 2026",
+		title: "Ashe's Touch — First-Person 3D Retro Dungeon Crawler in Rust",
+		subtitle: "Custom grid-based 3D engine compiled to a 1.44 MB native binary",
+		stack: ["Rust (2021)", "Macroquad", "GLSL Shaders", "Raycasting / 3D Billboards", "Procedural Audio"],
+		bullets: [
+			"Built a classic Eye of the Beholder-style first-person dungeon crawler in Rust featuring 90° grid navigation, 3D perspective corridor rendering, and a 4-hero party combat system.",
+			"Wrote an offscreen 320x240 pixel-art render pipeline with custom GLSL CRT scanline/curvature post-processing shaders and a real-time automap overlay.",
+			"Synthesized retro sound effects procedurally at runtime and tuned Cargo LTO/strip profiles to package the entire game into a single 1.44 MB executable."
+		],
+		links: []
+	},
+	{
+		id: "vr-earthquake",
+		category: "VR Simulation & Performance Engineering",
+		period: "2025",
+		title: "VR Earthquake Drill & Rescue Training Simulation",
+		subtitle: "Standalone VR emergency response simulation optimized from 24 FPS to 60 FPS",
+		stack: ["Unity 3D", "C#", "XR Interaction Toolkit", "GPU Instancing", "Baked Lightmaps", "Spatial Audio"],
+		bullets: [
+			"Developed an interactive VR earthquake preparedness simulation guiding users through Drop-Cover-Hold protocols, structural hazard avoidance, and post-quake evacuation.",
+			"Profiled CPU/GPU frame bottlenecks on standalone VR hardware and boosted frame rates from 24 FPS to a stable 60 FPS (+150%) via draw-call batching, lightmap baking, and physics collider decimation."
+		],
+		links: []
+	},
+	{
+		id: "llm-eval",
+		category: "AI Developer Tooling & Benchmarking",
+		period: "2025 – 2026",
+		title: "LLM Code Evaluation Workstation",
+		subtitle: "Side-by-side multi-LLM code generation benchmark and sandboxed iframe runner",
+		stack: ["TypeScript", "Node.js", "Express", "OpenRouter API", "HTML5 Sandbox", "Tailwind CSS"],
+		bullets: [
+			"Created an evaluation platform that dispatches identical coding prompts concurrently across multiple LLMs (Claude, GPT, Gemini, DeepSeek, Llama) via OpenRouter.",
+			"Parses streamed markdown responses to extract executable HTML/CSS/JS bundles and renders them live inside isolated sandboxed iframes alongside latency and token-cost metrics."
+		],
+		links: []
+	},
+	{
+		id: "thumbnail-gen",
+		category: "Generative AI & Media Pipeline",
+		period: "2025 – 2026",
+		title: "AI Blog Thumbnail & Visual Asset Generator",
+		subtitle: "Automated Flux/Together AI image synthesis and vector typography compositor",
+		stack: ["TypeScript", "Node.js", "Express", "Together AI (Flux)", "Sharp / Canvas", "REST API"],
+		bullets: [
+			"Built an automated visual pipeline that transforms article titles and summaries into context-aware visual prompts and generates high-resolution artwork via Flux diffusion models.",
+			"Implemented automated post-processing to composite brand overlays, gradients, and crisp typography into publication-ready 16:9 thumbnails."
+		],
+		links: []
+	},
+	{
+		id: "mobile-web",
+		category: "High-Performance Web & Cross-Platform Mobile",
+		period: "2024 – 2026",
+		title: "renazteknik.com (100/100 Lighthouse) & Flutter Mobile Suite",
+		subtitle: "Zero-JS static web architecture and real-time multiplayer Flutter applications",
+		stack: ["Astro", "Flutter", "Dart", "Riverpod / Bloc", "Firebase", "REST APIs", "Tailwind CSS"],
+		bullets: [
+			"Delivered renazteknik.com with perfect 100/100 Google Lighthouse scores across Performance, Accessibility, Best Practices, and SEO using Astro islands and WebP asset pipelines.",
+			"Engineered cross-platform Flutter apps including Herkesyesin (food discovery & ordering) and libreQuiz (real-time multiplayer room synchronization and live leaderboards)."
+		],
+		links: [
+			{ label: "renazteknik.com Live", href: "https://renazteknik.com" }
+		]
+	},
+	{
+		id: "linux-tooling",
+		category: "Linux Systems & Intelligent Automation",
+		period: "2024 – 2026",
+		title: "Freelancer Job Scorer & Void/Arch Linux Workflow Suite",
+		subtitle: "Persona-aware job ranking CLI and low-footprint X11 desktop automation",
+		stack: ["Python", "Bash", "Linux (Void / Arch)", "X11 / DWM", "REST APIs", "Regex Scoring"],
+		bullets: [
+			"Built an automated Freelancer.com API ingestion and scoring engine in Python that filters hundreds of listings against persona rules, skill weights, bid competition, and budget ratios.",
+			"Maintains a custom minimalist Void/Arch Linux environment with automated window management, audio/display scripting, and containerized self-hosted services."
+		],
+		links: []
+	}
+];
+
+const formatDate = (dateString: string): string => {
+	const date = new Date(dateString);
+	return date.toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' });
+};
+---
+
+<Layout title="Projects - Ahmet Furkan Kurt" description="Featured engineering case studies and GitHub repositories by Ahmet Furkan Kurt">
+	<Navigation />
+	
+	<!-- Background -->
+	<div id="page-bg">
+		<img src={bgImage.src} alt="" id="bg-image" />
+		<div class="overlay"></div>
+	</div>
+	
+	<div class="min-h-screen pt-20 relative">
+		<div class="max-w-7xl mx-auto px-6 py-12">
+			<div class="mb-10 glass-soft p-8 flex flex-col md:flex-row md:items-center md:justify-between gap-6">
+				<div>
+					<a href="/#projects" class="font-medium inline-flex items-center gap-2 mb-4" style="color: var(--accent-primary);">
+						<svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
+						</svg>
+						Back to Home
+					</a>
+					<h1 class="text-4xl md:text-5xl font-black mb-3" style="color: white;">Engineering Projects</h1>
+					<p class="text-base md:text-lg secondary-text max-w-2xl">
+						Deep-dive architectural case studies across 3D graphics engines, enterprise .NET backends, computer vision, and cross-platform applications.
+					</p>
+				</div>
+				<div class="flex flex-wrap gap-3">
+					<a
+						href="/Ahmet_Furkan_Kurt_Portfolio_EN.pdf"
+						download="Ahmet_Furkan_Kurt_Portfolio_EN.pdf"
+						class="px-5 py-3 rounded-lg font-semibold transition-all shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 inline-flex items-center gap-2 text-sm"
+						style="background-color: var(--accent-primary); color: white;"
+					>
+						<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+						</svg>
+						Portfolio PDF (EN)
+					</a>
+					<a
+						href="/Ahmet_Furkan_Kurt_Portfoy_TR.pdf"
+						download="Ahmet_Furkan_Kurt_Portfoy_TR.pdf"
+						class="px-5 py-3 rounded-lg font-semibold transition-all shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 inline-flex items-center gap-2 text-sm"
+						style="background-color: rgba(255,255,255,0.16); border: 1px solid rgba(255,255,255,0.35); color: white;"
+					>
+						<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+						</svg>
+						Portföy PDF (TR)
+					</a>
+				</div>
+			</div>
+
+			<!-- Featured Case Studies -->
+			<div class="mb-16">
+				<h2 class="text-2xl md:text-3xl font-bold mb-6" style="color: white;">Flagship Architecture &amp; Engineering Case Studies</h2>
+				<div class="grid md:grid-cols-2 gap-6">
+					{featuredProjects.map((proj) => (
+						<div id={proj.id} class="glass-soft rounded-xl p-6 md:p-8 flex flex-col justify-between scroll-mt-24">
+							<div>
+								<div class="flex items-center justify-between gap-2 mb-3 flex-wrap">
+									<span class="text-xs font-semibold uppercase tracking-wider px-3 py-1 rounded-full" style="background-color: rgba(255,255,255,0.15); color: var(--accent-primary);">
+										{proj.category}
+									</span>
+									<span class="text-xs secondary-text">{proj.period}</span>
+								</div>
+								<h3 class="text-xl md:text-2xl font-bold mb-1" style="color: white;">{proj.title}</h3>
+								<p class="text-sm secondary-text mb-4">{proj.subtitle}</p>
+								<div class="flex flex-wrap gap-2 mb-4">
+									{proj.stack.map((tech) => (
+										<span class="px-2.5 py-1 rounded-full text-xs font-medium" style="background-color: var(--accent-secondary); color: white;">
+											{tech}
+										</span>
+									))}
+								</div>
+								<ul class="space-y-2 mb-4">
+									{proj.bullets.map((bullet) => (
+										<li class="flex items-start gap-2 text-xs md:text-sm secondary-text leading-relaxed">
+											<span class="mt-1" style="color: var(--accent-primary);">•</span>
+											<span>{bullet}</span>
+										</li>
+									))}
+								</ul>
+							</div>
+							{proj.links.length > 0 && (
+								<div class="flex gap-4 pt-2 border-t border-white/15">
+									{proj.links.map((link) => (
+										<a href={link.href} target="_blank" rel="noopener noreferrer" class="text-sm font-semibold inline-flex items-center gap-1" style="color: var(--accent-primary);">
+											{link.label} →
+										</a>
+									))}
+								</div>
+							)}
+						</div>
+					))}
+				</div>
+			</div>
+
+			<!-- GitHub Repositories -->
+			<div class="mb-6">
+				<h2 class="text-2xl md:text-3xl font-bold mb-2" style="color: white;">Open-Source &amp; GitHub Repositories</h2>
+				<p class="text-sm md:text-base secondary-text mb-6">Live feed of public repositories from github.com/furkkurt</p>
+			</div>
+
+			{error ? (
+				<div class="glass-soft p-6">
+					<p style="color: rgba(255, 100, 100, 0.9);">{error}</p>
+				</div>
+			) : (
+				<div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+					{repos.map((repo) => (
+						<a 
+							href={repo.html_url} 
+							target="_blank" 
+							rel="noopener noreferrer"
+							class="glass-soft rounded-xl p-6 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 group"
+						>
+							<div class="flex items-start justify-between mb-3">
+								<h3 class="text-xl font-bold group-hover:opacity-80 transition-colors flex-1" style="color: white;">
+									{repo.name}
+								</h3>
+								<svg class="w-5 h-5 secondary-text group-hover:opacity-100 transition-colors flex-shrink-0 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+									<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
+								</svg>
+							</div>
+							
+							{repo.description && (
+								<p class="secondary-text mb-4 line-clamp-2">{repo.description}</p>
+							)}
+							
+							<div class="flex items-center gap-4 flex-wrap">
+								{repo.language && (
+									<span class="px-3 py-1 rounded-full text-sm font-medium" style="background-color: var(--accent-primary); color: white; opacity: 0.8;">
+										{repo.language}
+									</span>
+								)}
+								<div class="flex items-center gap-4 text-sm secondary-text">
+									{repo.stargazers_count > 0 && (
+										<span class="flex items-center gap-1">
+											<svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+												<path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+											</svg>
+											{repo.stargazers_count}
+										</span>
+									)}
+									{repo.forks_count > 0 && (
+										<span class="flex items-center gap-1">
+											<svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+												<path d="M7.707 10.293a1 1 0 10-1.414 1.414l3 3a1 1 0 001.414 0l3-3a1 1 0 00-1.414-1.414L11 11.586V6h5a2 2 0 012 2v7a2 2 0 01-2 2H4a2 2 0 01-2-2V8a2 2 0 012-2h5v5.586l-1.293-1.293zM9 4a1 1 0 012 0v2H9V4z"></path>
+											</svg>
+											{repo.forks_count}
+										</span>
+									)}
+								</div>
+							</div>
+							
+							<div class="mt-4 text-xs secondary-text">
+								Updated {formatDate(repo.updated_at)}
+							</div>
+						</a>
+					))}
+				</div>
+			)}
+		</div>
+	</div>
+</Layout>
+
+<style>
+	/* Background layer - same as home page */
+	#page-bg {
+		position: fixed;
+		inset: 0;
+		z-index: 0;
+		overflow: hidden;
+		pointer-events: none;
+	}
+	
+	#bg-image {
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+		transform: translate(-50%, -50%) scale(1.0);
+		will-change: transform;
+		z-index: 1;
+	}
+	
+	#page-bg .overlay {
+		position: absolute;
+		inset: 0;
+		background-color: rgba(0, 0, 0, 0.68);
+		pointer-events: none;
+		z-index: 2;
+	}
+	
+	main, nav, section, footer {
+		position: relative;
+		z-index: 10;
+	}
+	
+	/* Glass overlay system with glow animation */
+	.glass-soft {
+		background: rgba(255, 255, 255, 0.12);
+		backdrop-filter: blur(12px);
+		border-radius: 1rem;
+		border: 1px solid rgba(255, 255, 255, 0.3);
+		box-shadow: 0 0 20px rgba(255, 255, 255, 0.1), 0 0 40px rgba(255, 255, 255, 0.05);
+		animation: card-glow-pulse 4s ease-in-out infinite;
+	}
+	
+	@keyframes card-glow-pulse {
+		0%, 100% {
+			box-shadow: 0 0 20px rgba(255, 255, 255, 0.1), 0 0 40px rgba(255, 255, 255, 0.05);
+		}
+		50% {
+			box-shadow: 0 0 25px rgba(255, 255, 255, 0.15), 0 0 50px rgba(255, 255, 255, 0.08), 0 0 60px rgba(255, 255, 255, 0.03);
+		}
+	}
+	
+	.secondary-text {
+		color: rgba(255, 255, 255, 0.65) !important;
+	}
+	
+	.line-clamp-2 {
+		display: -webkit-box;
+		-webkit-line-clamp: 2;
+		-webkit-box-orient: vertical;
+		overflow: hidden;
+	}
+</style>

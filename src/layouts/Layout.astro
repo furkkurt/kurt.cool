@@ -1,23 +1,122 @@
+---
+interface Props {
+	title?: string;
+	description?: string;
+}
+
+const { title = "Ahmet Furkan Kurt - Software Engineer Portfolio", description = "Full-Stack Software Engineer · 3D Graphics & Game Engine Developer · Cross-Platform Mobile & Computer Vision" } = Astro.props;
+
+const siteUrl = "https://kurt.cool";
+const fullTitle = title || "Ahmet Furkan Kurt - Software Engineer & Game Engine Developer";
+const fullDescription = description || "Software Engineer specializing in .NET 8/10 Clean Architecture, Next.js/Astro, WebGL/Three.js & Unity 3D engines, Flutter mobile apps, and real-time Computer Vision.";
+---
+
 <!doctype html>
 <html lang="en">
 	<head>
 		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		
+		<!-- Favicon -->
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
+		<link rel="icon" type="image/png" href="/favicon.ico" />
+		<link rel="apple-touch-icon" href="/favicon.svg" />
+		
+		<!-- Primary Meta Tags -->
+		<title>{fullTitle}</title>
+		<meta name="title" content={fullTitle} />
+		<meta name="description" content={fullDescription} />
+		<meta name="keywords" content="Ahmet Furkan Kurt, Furkan Kurt, Software Engineer, Full-Stack Developer, .NET, Clean Architecture, Next.js, TypeScript, Three.js, Unity, Rust, Flutter, Computer Vision, OpenCV, MediaPipe, Portfolio" />
+		<meta name="author" content="Ahmet Furkan Kurt" />
+		<meta name="robots" content="index, follow" />
+		<meta name="language" content="English" />
+		
+		<!-- Open Graph / Facebook -->
+		<meta property="og:type" content="website" />
+		<meta property="og:url" content={siteUrl} />
+		<meta property="og:title" content={fullTitle} />
+		<meta property="og:description" content={fullDescription} />
+		<meta property="og:site_name" content="Furkan Kurt - Portfolio" />
+		
+		<!-- Twitter -->
+		<meta property="twitter:card" content="summary_large_image" />
+		<meta property="twitter:url" content={siteUrl} />
+		<meta property="twitter:title" content={fullTitle} />
+		<meta property="twitter:description" content={fullDescription} />
+		
+		<!-- Additional SEO -->
+		<meta name="theme-color" content="#7C3AED" />
 		<meta name="generator" content={Astro.generator} />
-		<title>Astro Basics</title>
+		
+		<!-- Canonical URL -->
+		<link rel="canonical" href={siteUrl} />
+		
+		<!-- Fonts - Optimized loading -->
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" media="print" onload="this.media='all'" />
+		<noscript><link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" /></noscript>
 	</head>
-	<body>
+	<body class="antialiased" style="font-family: 'Inter', system-ui, -apple-system, sans-serif;">
 		<slot />
+		<!-- Scroll to Top Button - Direct child of body -->
+		<button 
+			id="scroll-to-top" 
+			class="btn-primary-glow fixed bottom-6 md:bottom-8 right-6 md:right-8 p-2.5 md:p-3 rounded-full shadow-lg transition-all opacity-0 pointer-events-none z-40"
+			aria-label="Scroll to top"
+			style="color: white; position: fixed; bottom: 1.5rem; right: 1.5rem;"
+		>
+			<svg class="w-5 h-5 md:w-6 md:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+				<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18"></path>
+			</svg>
+		</button>
 	</body>
 </html>
 
-<style>
-	html,
+<style is:global>
+	:root {
+		/* Global light text colors */
+		--text-primary: #FFFFFF;
+		--text-secondary: rgba(255, 255, 255, 0.65);
+		--text-muted: rgba(255, 255, 255, 0.5);
+		
+		/* Default accent (Muted Purple) */
+		--accent-primary: #7C3AED;
+		--accent-primary-hover: #6D28D9;
+	}
+	
+	html {
+		scroll-behavior: smooth;
+	}
+	
 	body {
 		margin: 0;
 		width: 100%;
-		height: 100%;
+		min-height: 100svh;
+		color: var(--text-primary);
+		overflow-x: hidden;
+		overflow-y: auto;
+	}
+	
+	/* Typography improvements */
+	h1, h2, h3, h4, h5, h6 {
+		color: var(--text-primary);
+		letter-spacing: -0.02em;
+		font-weight: 800;
+	}
+	
+	h1 {
+		font-weight: 900;
+		letter-spacing: -0.03em;
+	}
+	
+	h2 {
+		font-weight: 800;
+		letter-spacing: -0.02em;
+	}
+	
+	p, li {
+		color: var(--text-primary);
+		line-height: 1.6;
 	}
 </style>

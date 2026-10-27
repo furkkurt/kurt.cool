@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8">
+  <title>Ahmet Furkan Kurt - Özgeçmiş (CV)</title>
+  <style>
+    @page {
+      size: A4 portrait;
+      margin: 9.5mm 13mm 9.5mm 13mm;
+    }
+
+    :root {
+      --primary: #0f2742;
+      --accent: #0b5cab;
+      --text-dark: #111827;
+      --text-body: #1f2937;
+      --text-muted: #4b5563;
+      --border-line: #cbd5e1;
+      --tag-bg: #f1f5f9;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html, body {
+      font-family: 'Liberation Sans', 'DejaVu Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+      font-size: 8.4pt;
+      line-height: 1.33;
+      color: var(--text-body);
+      background: #ffffff;
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    /* Header */
+    header {
+      border-bottom: 2px solid var(--primary);
+      padding-bottom: 5px;
+      margin-bottom: 6px;
+    }
+
+    .header-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      margin-bottom: 2px;
+    }
+
+    h1 {
+      font-size: 17pt;
+      font-weight: 800;
+      color: var(--primary);
+      letter-spacing: -0.02em;
+      text-transform: uppercase;
+    }
+
+    .headline {
+      font-size: 9pt;
+      font-weight: 700;
+      color: var(--accent);
+    }
+
+    .contact-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 3px 11px;
+      font-size: 8pt;
+      color: var(--text-muted);
+    }
+
+    .contact-row span {
+      display: inline-flex;
+      align-items: center;
+    }
+
+    .contact-row strong {
+      color: var(--text-dark);
+      font-weight: 600;
+      margin-right: 3px;
+    }
+
+    /* Section */
+    section {
+      margin-bottom: 6.5px;
+    }
+
+    h2 {
+      font-size: 9.1pt;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      color: var(--primary);
+      border-bottom: 1.2px solid var(--border-line);
+      padding-bottom: 1.5px;
+      margin-bottom: 4px;
+    }
+
+    .summary-text {
+      font-size: 8.35pt;
+      color: var(--text-body);
+      text-align: justify;
+      line-height: 1.35;
+    }
+
+    /* Skills List (ATS linear key-value) */
+    .skills-container {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .skill-row {
+      font-size: 8.25pt;
+      line-height: 1.32;
+    }
+
+    .skill-category {
+      font-weight: 700;
+      color: var(--primary);
+    }
+
+    /* Experience & Project Items */
+    .entry {
+      margin-bottom: 4px;
+      break-inside: avoid;
+    }
+
+    .entry:last-child {
+      margin-bottom: 0;
+    }
+
+    .entry-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-bottom: 1px;
+    }
+
+    .entry-title-group {
+      font-size: 8.65pt;
+    }
+
+    .entry-role {
+      font-weight: 700;
+      color: var(--text-dark);
+    }
+
+    .entry-org {
+      font-weight: 700;
+      color: var(--accent);
+    }
+
+    .entry-tech {
+      font-size: 7.9pt;
+      font-weight: 600;
+      color: var(--accent);
+      margin-bottom: 1.5px;
+    }
+
+    .entry-meta {
+      font-size: 7.85pt;
+      font-weight: 600;
+      color: var(--text-muted);
+      white-space: nowrap;
+      margin-left: 8px;
+    }
+
+    ul.bullets {
+      list-style-type: disc;
+      margin-left: 13px;
+      margin-top: 1px;
+    }
+
+    ul.bullets li {
+      font-size: 8.25pt;
+      margin-bottom: 1px;
+      text-align: justify;
+      line-height: 1.32;
+    }
+
+    ul.bullets li:last-child {
+      margin-bottom: 0;
+    }
+
+    ul.bullets li strong {
+      color: var(--text-dark);
+      font-weight: 600;
+    }
+
+    .page-break {
+      page-break-before: always;
+      break-before: page;
+    }
+
+    /* Education compact */
+    .edu-entry {
+      margin-bottom: 2.5px;
+      break-inside: avoid;
+    }
+
+    .edu-entry:last-child {
+      margin-bottom: 0;
+    }
+
+    .edu-details {
+      font-size: 8.1pt;
+      color: var(--text-body);
+    }
+
+    /* Info Grid at bottom of Page 2 */
+    .info-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
+      font-size: 8.5pt;
+    }
+
+    .info-list li strong {
+      color: var(--primary);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ==================== PAGE 1 ==================== -->
+  <header>
+    <div class="header-top">
+      <h1>Ahmet Furkan Kurt</h1>
+      <div class="headline">Yazılım Mühendisi | Full-Stack, Kullanıcı Arayüzü (HMI/UI), 3B Simülasyon &amp; Sistem Mimarisi</div>
+    </div>
+    <div class="contact-row">
+      <span><strong>Konum:</strong> İstanbul, Türkiye</span>
+      <span><strong>Tel:</strong> +90 552 248 41 38</span>
+      <span><strong>E-posta:</strong> <a href="mailto:afurkankurt@outlook.com">afurkankurt@outlook.com</a></span>
+      <span><strong>Portföy:</strong> <a href="https://kurt.cool">kurt.cool</a></span>
+      <span><strong>GitHub:</strong> <a href="https://github.com/furkkurt">github.com/furkkurt</a></span>
+      <span><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/furkan-kurt-3660b7181/">linkedin.com/in/furkan-kurt-3660b7181</a></span>
+    </div>
+  </header>
+
+  <section>
+    <h2>Profesyonel Özet</h2>
+    <p class="summary-text">
+      Fırat Üniversitesi Yazılım Mühendisliği (GANO: 3.10/4.00) ve İspanya Universidad de Oviedo Bilgisayar Bilimleri geçmişine sahip, <strong>Nesne Tabanlı Programlama (OOP)</strong>, katmanlı mimari (Clean Architecture, CQRS) ve yüksek performanslı <strong>Kullanıcı Arayüzü (UI/HMI)</strong> geliştirmeye odaklanan Yazılım Mühendisi. C#, TypeScript, Dart/Flutter, Python ve Rust ile tarayıcı tabanlı 3B oyun motoru ve görsel editörlerden VR simülasyonlarına, bilgisayarlı görü (OpenCV/MediaPipe) tabanlı gerçek zamanlı insan-makine etkileşimi araçlarından konteynerize .NET mikro/modüler servislerine kadar uçtan uca üretim sistemleri geliştirmiştir. Birincil işletim sistemi olarak Linux (X11, CLI) kullanan, güçlü İngilizce yetkinliğine (<strong>YDS: 93</strong>) ve Agile/Scrum disiplinine sahip ürün odaklı mühendis.
+    </p>
+  </section>
+
+  <section>
+    <h2>Teknik Yetkinlikler</h2>
+    <div class="skills-container">
+      <div class="skill-row">
+        <span class="skill-category">Programlama Dilleri &amp; OOP:</span>
+        C#, TypeScript, JavaScript (ES6+), Dart, Python, Rust, C++, Java, SQL, Bash, HTML5, CSS3
+      </div>
+      <div class="skill-row">
+        <span class="skill-category">Arayüz (UI/HMI), Mobil &amp; 3B Simülasyon:</span>
+        Flutter (Riverpod, Provider), React, Next.js, Astro, Unity (C#, 3D/VR, Custom Shaders), Three.js, WebGL, Phaser.js, cannon-es, Zustand, Tailwind CSS, PyQt5, Tkinter, Streamlit, Cordova
+      </div>
+      <div class="skill-row">
+        <span class="skill-category">Backend &amp; Yazılım Mimarisi:</span>
+        .NET 8 / .NET 10, ASP.NET Core, Entity Framework Core, Clean Architecture, Domain-Driven Design (DDD), CQRS, MediatR, FastAPI, Node.js, RESTful API, IdentityServer4, JWT, FluentValidation, Serilog, Swagger/OpenAPI
+      </div>
+      <div class="skill-row">
+        <span class="skill-category">Veri Tabanı, Görüntü İşleme &amp; Yapay Zekâ:</span>
+        PostgreSQL, SQLite, Firebase (Firestore, Auth, Storage), OpenCV, MediaPipe (3B El/Jest Takibi), LLM Benchmark &amp; Değerlendirme Hatları, OpenRouter, Replicate (Flux), Statik Kod Analizi (Detekt, ESLint)
+      </div>
+      <div class="skill-row">
+        <span class="skill-category">Sistem, DevOps &amp; Mühendislik Pratikleri:</span>
+        Linux (Void/Arch, i3wm, X11, xdotool, ALSA/PipeWire), Docker, Docker Compose, Nginx, Git, CI/CD, Self-Hosted VPS, Agile / Scrum, Tasarım Desenleri (Design Patterns, ECS), Otomata &amp; Derleyici Teorisi
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>İş ve Staj Deneyimi</h2>
+
+    <div class="entry">
+      <div class="entry-header">
+        <div class="entry-title-group">
+          <span class="entry-role">Mobil &amp; Frontend Yazılım Mühendisi (Yarı Zamanlı)</span> — <span class="entry-org">208 Software Solutions</span>
+        </div>
+        <div class="entry-meta">Aralık 2025 – Nisan 2026 | İstanbul</div>
+      </div>
+      <ul class="bullets">
+        <li>Çok satıcılı yemek sipariş platformu (<em>Herkesyesin</em>) dahil olmak üzere canlı Flutter mobil uygulamalarında Provider/Riverpod durum yönetimi ve RESTful API entegrasyonlarıyla ölçeklenebilir arayüzler geliştirdi.</li>
+        <li>Clean Code ve katmanlı mimari prensipleriyle 50+ özellik modülünü yeniden yapılandırarak çalışma zamanı hata oranını <strong>%70 azalttı</strong>; gerçek zamanlı sipariş takibi ve dokunmatik etkileşim akışlarını iyileştirdi.</li>
+      </ul>
+    </div>
+
+    <div class="entry">
+      <div class="entry-header">
+        <div class="entry-title-group">
+          <span class="entry-role">Unity &amp; 3B Simülasyon Geliştirici (Stajyer Mühendis)</span> — <span class="entry-org">emeltek yazılım</span>
+        </div>
+        <div class="entry-meta">Eylül 2025 – Şubat 2026 | Elazığ</div>
+      </div>
+      <ul class="bullets">
+        <li>Unity (C#) ve Nesne Tabanlı Programlama (OOP) prensipleriyle etkileşimli 3B <strong>Sanal Gerçeklik (VR) Deprem Tatbikatı</strong> eğitim simülasyonu prototipini, fizik etkileşimlerini ve kullanıcı arayüzlerini geliştirdi.</li>
+        <li>Özel aydınlatma shader'ları, post-processing ve render pipeline darboğaz optimizasyonları uygulayarak simülasyon kare hızını <strong>24 FPS'ten 60 FPS'e (%150 artış)</strong> çıkardı.</li>
+      </ul>
+    </div>
+
+    <div class="entry">
+      <div class="entry-header">
+        <div class="entry-title-group">
+          <span class="entry-role">Full-Stack Web Geliştirici (Stajyer Mühendis)</span> — <span class="entry-org">SmartMessage</span>
+        </div>
+        <div class="entry-meta">Ağustos 2025 – Ekim 2025 | İstanbul</div>
+      </div>
+      <ul class="bullets">
+        <li>Kurumsal web uygulamasına 10+ RESTful API uç noktası entegre etti; asenkron veri çekme ve istemci önbellekleme iyileştirmeleriyle yanıt süresini <strong>~2000ms kısalttı</strong>.</li>
+        <li>TİTCK lisanslı ilaç veri tabanı için yüksek hacimli veri sorgulama, dinamik filtreleme ve optimize edilmiş sayfalama (pagination) arayüzü geliştirdi.</li>
+      </ul>
+    </div>
+
+    <div class="entry">
+      <div class="entry-header">
+        <div class="entry-title-group">
+          <span class="entry-role">Yazılım Mühendisliği &amp; Bilişim Eğitmeni</span> — <span class="entry-org">Saksı Kampüs &amp; AKİL Okulları</span>
+        </div>
+        <div class="entry-meta">Temmuz 2023 – Günümüz | İstanbul</div>
+      </div>
+      <ul class="bullets">
+        <li>Üniversite ve lise düzeyindeki öğrencilere Otomata Teorisi, Biçimsel Diller, Veri Yapıları ve Algoritmalar, Nesne Tabanlı Programlama (OOP) ve Agile/Scrum süreçleri üzerine uygulamalı eğitim ve kod inceleme mentorluğu sundu.</li>
+      </ul>
+    </div>
+
+    <div class="entry">
+      <div class="entry-header">
+        <div class="entry-title-group">
+          <span class="entry-role">Çapraz Platform Mobil Geliştirici (Stajyer Mühendis)</span> — <span class="entry-org">Sia Teknoloji</span>
+        </div>
+        <div class="entry-meta">Eylül 2024 – Ekim 2024 | Elazığ</div>
+      </div>
+      <ul class="bullets">
+        <li>Hem mobil hem web üzerinde gerçek zamanlı çalışan rekabetçi çok oyunculu bilgi yarışması ve sosyal platformu (<em>libreQuiz</em>) için Flutter ve Firebase tabanlı oda/oturum senkronizasyon mimarisini geliştirdi.</li>
+      </ul>
+    </div>
+
+    <div class="entry">
+      <div class="entry-header">
+        <div class="entry-title-group">
+          <span class="entry-role">Frontend &amp; Oyun Sistemleri Geliştirici (Yarı Zamanlı, Uzaktan)</span> — <span class="entry-org">LAYZR.GG</span>
+        </div>
+        <div class="entry-meta">Nisan 2023 – Ekim 2023 | Münih, Almanya</div>
+      </div>
+      <ul class="bullets">
+        <li>Uluslararası dağıtık bir mühendislik ekibinde Twitch gerçek zamanlı etkinlik entegrasyonuna sahip yayıncı overlay oyunu (<em>Streamtopia</em>) prototipini ve Next.js + Phaser.js tabanlı yönetim panelini geliştirdi; 20+ interaktif prototip teslim etti.</li>
+      </ul>
+    </div>
+
+    <div class="entry">
+      <div class="entry-header">
+        <div class="entry-title-group">
+          <span class="entry-role">Unity Level &amp; Editör Araçları Geliştirici (Yarı Zamanlı)</span> — <span class="entry-org">Twimh Games</span>
+        </div>
+        <div class="entry-meta">Ekim 2022 – Şubat 2023 | İstanbul</div>
+      </div>
+      <ul class="bullets">
+        <li>Unity (C#) üzerinde sahne kurulumunu ve seviye tasarım iş akışlarını hızlandıran özel editör araçları (custom editor tooling) ve yeniden kullanılabilir oyun içi bileşenler geliştirdi.</li>
+      </ul>
+    </div>
+
+    <div class="entry">
+      <div class="entry-header">
+        <div class="entry-title-group">
+          <span class="entry-role">Kurucu &amp; Bağımsız Oyun Geliştirici</span> — <span class="entry-org">makinDAGames</span>
+        </div>
+        <div class="entry-meta">Temmuz 2020 – Günümüz | İstanbul</div>
+      </div>
+      <ul class="bullets">
+        <li>Google Play, itch.io, Amazon Appstore ve web üzerinde <strong>14+ mobil ve tarayıcı oyunu</strong> yayınlayarak 1.000+ indirmeye ulaştı; oyun mimarisi, UI/UX, Android paketleme ve kendi Linux VPS sunucusu üzerinde CI/CD süreçlerini uçtan uca yönetti.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section>
+    <h2>Eğitim</h2>
+    <div class="edu-entry">
+      <div class="entry-header">
+        <div class="entry-title-group">
+          <span class="entry-role">Fırat Üniversitesi</span> — <span class="entry-org">Lisans, Yazılım Mühendisliği</span>
+        </div>
+        <div class="entry-meta">Eylül 2021 – Temmuz 2026 | Elazığ</div>
+      </div>
+      <div class="edu-details">
+        <strong>GANO:</strong> 3.10 / 4.00 • <strong>Bitirme Tezi:</strong> <em>Temple Engine</em> — Three.js ve TypeScript tabanlı, masaüstü (EXE) ve mobil (APK) çıktı üretebilen 3B Web Oyun Motoru ve Görsel Editör.
+      </div>
+    </div>
+
+    <div class="edu-entry">
+      <div class="entry-header">
+        <div class="entry-title-group">
+          <span class="entry-role">Universidad de Oviedo</span> — <span class="entry-org">Bilgisayar Bilimleri (Erasmus+ Lisans Değişim Programı)</span>
+        </div>
+        <div class="entry-meta">Eylül 2023 – Haziran 2024 | Oviedo, İspanya</div>
+      </div>
+      <div class="edu-details">
+        Uluslararası değişim programı kapsamında İngilizce mühendislik dersleri, yazılım mimarisi ve algoritma çalışmaları.
+      </div>
+    </div>
+
+    <div class="edu-entry">
+      <div class="entry-header">
+        <div class="entry-title-group">
+          <span class="entry-role">Anadolu Üniversitesi</span> — <span class="entry-org">Lisans, Yönetim Bilişim Sistemleri (Açıköğretim)</span>
+        </div>
+        <div class="entry-meta">Eylül 2026 – Devam Ediyor</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== PAGE 2 ==================== -->
+  <div class="page-break"></div>
+
+  <section>
+    <h2>Öne Çıkan Mühendislik ve Mimari Projeler</h2>
+
+    <div class="entry">
+      <div class="entry-header">
+        <div class="entry-title-group">
+          <span class="entry-role">Temple Engine</span> — <span class="entry-org">Tarayıcı Tabanlı 3B Oyun Motoru ve Görsel Editör</span>
+        </div>
+        <div class="entry-meta">Bitirme Projesi | 2026</div>
+      </div>
+      <div class="entry-tech">Teknolojiler: TypeScript, Three.js, WebGL, React, Zustand, cannon-es, Vite, ECS Mimarisi</div>
+      <ul class="bullets">
+        <li><strong>Renderer-Agnostik Motor Çekirdeği:</strong> Saf TypeScript ile Three.js'ten bağımsız Entity-Component-System (ECS) mimarisi, sahne grafı, olay veri yolu (event bus) ve deterministik sabit zaman adımlı (fixed-timestep) oyun döngüsü geliştirdi.</li>
+        <li><strong>Görsel HMI/Editör Katmanı:</strong> React ve Zustand kullanarak hiyerarşi ağacı, 3B viewport, dinamik özellik denetleyicisi (inspector), 3B dönüşüm gizmo'ları, GLB model içe aktarma, cannon-es fizik/çarpışma entegrasyonu ve sahne anlık görüntüsü (snapshot) geri yüklemeli Play/Stop modu inşa etti.</li>
+      </ul>
+    </div>
+
+    <div class="entry">
+      <div class="entry-header">
+        <div class="entry-title-group">
+          <span class="entry-role">Gerçek Zamanlı El Jest Tanıma ve HMI Giriş Sistemi</span> — <span class="entry-org">Bilgisayarlı Görü &amp; Masaüstü Kontrolü</span>
+        </div>
+        <div class="entry-meta">Görüntü İşleme &amp; HMI | 2026</div>
+      </div>
+      <div class="entry-tech">Teknolojiler: Python, OpenCV, MediaPipe (3B Hand Landmarks), Linux X11 (xdotool), Tkinter Overlay HUD</div>
+      <ul class="bullets">
+        <li><strong>Düşük Gecikmeli Jest İşleme:</strong> Webcam üzerinden MediaPipe 3B el eklem (landmark) noktalarını gerçek zamanlı analiz ederek parmak sıkıştırma (pinch/T9 çoklu dokunuş yazma), çift el parmak sayma ve avuç yönelimine göre fare kontrolü sağlayan modüler bir görüntü işleme hattı kurdu.</li>
+        <li><strong>İşletim Sistemi Entegrasyonu &amp; HUD:</strong> Algılanan jestleri Linux X11 (xdotool) üzerinden gerçek zamanlı klavye ve fare olaylarına dönüştürdü; kalibrasyon eşiklerini ve durum bilgilerini gösteren şeffaf bir ekran üstü gösterge (Overlay HUD) geliştirdi.</li>
+      </ul>
+    </div>
+
+    <div class="entry">
+      <div class="entry-header">
+        <div class="entry-title-group">
+          <span class="entry-role">Boutique Lavinia</span> — <span class="entry-org">Modüler E-Ticaret ve Otomatik Veri Göçü Platformu</span>
+        </div>
+        <div class="entry-meta">Full-Stack Sistem Mimarisi</div>
+      </div>
+      <div class="entry-tech">Teknolojiler: .NET 8, ASP.NET Core, PostgreSQL, Entity Framework Core, IdentityServer4, JWT, Next.js, Docker Compose, Nginx</div>
+      <ul class="bullets">
+        <li>SimplCommerce tabanlı modüler monolit mimaride ürün, kategori, stok, sepet, fatura ve IdentityServer4/JWT kimlik doğrulama modüllerini geliştirdi; Nginx ters vekil, .NET API ve Next.js vitrin olarak 3 katmanlı Docker Compose yapısında dağıttı.</li>
+        <li>Ticimax legacy sisteminden gelen karmaşık Excel verilerini (hiyerarşik kategori ağacı, marka, kullanıcı ve 2.000+ ürün kaydı) sıfır veri kaybıyla temizleyip PostgreSQL'e aktaran otomatik veri migrasyon (ETL) hattı kurguladı.</li>
+      </ul>
+    </div>
+
+    <div class="entry">
+      <div class="entry-header">
+        <div class="entry-title-group">
+          <span class="entry-role">NewsEngine (fikrimce.net)</span> — <span class="entry-org">Kurumsal Haber Portalı Backend Mimarisi</span>
+        </div>
+        <div class="entry-meta">Backend &amp; Domain Mimarisi</div>
+      </div>
+      <div class="entry-tech">Teknolojiler: .NET 10, Clean Architecture, DDD, CQRS, MediatR, FluentValidation, Serilog, Swagger/OpenAPI, Astro, Docker</div>
+      <ul class="bullets">
+        <li>Domain-Driven Design (DDD) ve Clean Architecture prensipleriyle makale yaşam döngüsünü (taslak, editör incelemesi, yayın onayı), rol bazlı yetkilendirmeyi ve KVKK uyumluluk süreçlerini yöneten ölçeklenebilir bir backend geliştirdi.</li>
+        <li>MediatR ile komut/sorgu sorumluluk ayrımını (CQRS), FluentValidation ile doğrulama katmanını, Serilog ile yapılandırılmış loglamayı ve Swagger/OpenAPI ile belgelenmiş 100+ RESTful API uç noktasını hayata geçirdi.</li>
+      </ul>
+    </div>
+
+    <div class="entry">
+      <div class="entry-header">
+        <div class="entry-title-group">
+          <span class="entry-role">LLM Kod Değerlendirme Panosu</span> — <span class="entry-org">Otomatik Derleme ve Statik Analiz Benchmark İstasyonu</span>
+        </div>
+        <div class="entry-meta">Ar-Ge &amp; Otomasyon</div>
+      </div>
+      <div class="entry-tech">Teknolojiler: Python, FastAPI, Streamlit, SQLite, Kotlin, Flutter, Detekt Statik Analiz</div>
+      <ul class="bullets">
+        <li>Farklı büyük dil modellerinin (LLM) aynı prompt altında ürettiği kodları Kotlin ve Flutter derleyici/statik analiz (Detekt) araç zincirlerinden otomatik geçirerek derlenebilirlik, statik analiz kalitesi ve talimat sadakati metrikleriyle skorlayan tekrarlanabilir bir ölçüm platformu kurdu.</li>
+      </ul>
+    </div>
+
+    <div class="entry">
+      <div class="entry-header">
+        <div class="entry-title-group">
+          <span class="entry-role">Ashe's Touch</span> — <span class="entry-org">1.44 MB Boyut Sınırlı Retro Macera Oyunu</span>
+        </div>
+        <div class="entry-meta">Sistem &amp; Oyun Programlama | 2026</div>
+      </div>
+      <div class="entry-tech">Teknolojiler: Rust, Macroquad, Özel Ses Yaması (quad-snd), LTO/UPX Sıkıştırma, Linux (X11/ALSA/PipeWire) &amp; Windows</div>
+      <ul class="bullets">
+        <li>1.44 MB Game Jam kapsamında Rust ve Macroquad kullanarak tüm çalıştırılabilir ikili dosyası (binary + görsel/MIDI varlıklar) 1.474.560 bayt sınırının altında kalan, Linux (X11/ALSA/PipeWire) ve Windows çapraz derlemeli bir oyun geliştirdi.</li>
+      </ul>
+    </div>
+
+    <div class="entry">
+      <div class="entry-header">
+        <div class="entry-title-group">
+          <span class="entry-role">Blog Thumbnail Generator &amp; renazteknik.com</span> — <span class="entry-org">AI Görsel Üretim &amp; Kurumsal Web</span>
+        </div>
+        <div class="entry-meta">AI Entegrasyonu &amp; Canlı Ürün</div>
+      </div>
+      <div class="entry-tech">Teknolojiler: .NET 10, Astro, Tailwind CSS, OpenRouter, Replicate (Flux), Firebase Firestore, SEO, Google Ads</div>
+      <ul class="bullets">
+        <li><strong>AI Görsel Üretim Monorepo:</strong> Türkçe blog metinlerini .NET 10 güvenli sunucu proxy katmanı üzerinden OpenRouter ile İngilizce prompta dönüştürüp Replicate (Flux) ile 16:9 kapak görseli üreten tam yığın uygulama geliştirdi.</li>
+        <li><strong>renazteknik.com:</strong> Samsun'da faaliyet gösteren işletme için <strong>100/100 Google PageSpeed ve SEO</strong> skoru sağlayan, Google Ads dönüşüm takibi ve Firestore yorum altyapısıyla organik trafiği %500 artıran canlı kurumsal platform kurdu.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section>
+    <h2>Tamamlayıcı Sistem, Masaüstü ve Açık Kaynak Çalışmaları</h2>
+    <ul class="bullets">
+      <li><strong>Masaüstü Video Overlay Aracı (ceylinOverlay):</strong> Python, PyQt5, OpenCV (headless) ve <code>python-xlib</code> kullanarak Linux X11 pencere yöneticisi üzerinde çalışan düşük kaynak tüketimli masaüstü video overlay uygulaması.</li>
+      <li><strong>Derleyici Tasarımı, Grafik Shader &amp; Gömülü Sistemler:</strong> <em>MiniLan</em> dili için sözcüksel/sözdizimsel analizör (Lexical Analyzer) tasarımı; Unity üzerinde özel aydınlatma (custom lighting) shader'ları ve çoklu hedef kamera sistemleri; Arduino (C++, Arduboy/OLED) donanım programlama çalışmaları.</li>
+      <li><strong>Linux Masaüstü Altyapısı &amp; Açık Kaynak Eklentiler:</strong> i3wm, picom, dunst, mpv ve qutebrowser ile yapılandırılmış ve dokümante edilmiş Linux geliştirme ortamı; açık kaynaklı <code>qutebrowserRES</code> ve <code>Watch Later</code> otomasyon betikleri.</li>
+      <li><strong>Veri Odaklı İş Arama &amp; Filtreleme Otomasyonu (freelancer-finder):</strong> Python, REST API ve kural tabanlı skorlama motoruyla ilanları bütçe, rekabet ve teknik profil uyumuna göre otomatik sıralayan CLI aracı ve birim testleri.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>Yabancı Dil, Sınavlar ve Ek Bilgiler</h2>
+    <ul class="info-list">
+      <li><strong>Yabancı Diller:</strong> Türkçe (Anadil) • <strong>İngilizce: İleri Seviye (C1/C2) — YDS: 93 / 100</strong> (Temmuz 2026) • İspanyolca: Orta Öncesi (B1 — İspanya'da 1 akademik yıl eğitim)</li>
+      <li><strong>Merkezi Sınavlar:</strong> YDS (Yabancı Dil Bilgisi Seviye Tespit Sınavı): <strong>93</strong> (Temmuz 2026) • KPSS: <strong>77</strong> (Eylül 2026)</li>
+      <li><strong>Askerlik &amp; Çalışma Durumu:</strong> Tecilli (Temmuz 2028'e kadar) • Seyahat engeli bulunmamaktadır • Tam zamanlı, yerinde (on-site), hibrit veya uzaktan çalışmaya uygun.</li>
+    </ul>
+  </section>
+
+</body>
+</html>

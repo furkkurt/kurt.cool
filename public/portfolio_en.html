@@ -1,0 +1,679 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Engineering Project Portfolio — Ahmet Furkan Kurt</title>
+  <style>
+    @page {
+      size: A4 portrait;
+      margin: 14mm 16mm 14mm 16mm;
+    }
+
+    :root {
+      --primary: #0f2742;
+      --secondary: #1e3a5f;
+      --accent: #0b5cab;
+      --accent-subtle: #e6f0fa;
+      --text-dark: #111827;
+      --text-body: #1f2937;
+      --text-muted: #4b5563;
+      --border-line: #cbd5e1;
+      --card-bg: #ffffff;
+      --bg-soft: #f8fafc;
+      --pill-bg: #f1f5f9;
+      --pill-text: #0f2742;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html, body {
+      font-family: 'Liberation Sans', 'DejaVu Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+      font-size: 8.8pt;
+      line-height: 1.45;
+      color: var(--text-body);
+      background: #ffffff;
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+
+    a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    /* Header */
+    header.doc-header {
+      border-bottom: 2.5px solid var(--primary);
+      padding-bottom: 8px;
+      margin-bottom: 12px;
+    }
+
+    .header-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      margin-bottom: 3px;
+    }
+
+    h1 {
+      font-size: 18pt;
+      font-weight: 800;
+      color: var(--primary);
+      letter-spacing: -0.02em;
+      text-transform: uppercase;
+    }
+
+    .doc-subtitle {
+      font-size: 9.5pt;
+      font-weight: 700;
+      color: var(--accent);
+    }
+
+    .contact-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 3px 12px;
+      font-size: 8.2pt;
+      color: var(--text-muted);
+      margin-top: 2px;
+    }
+
+    .contact-row span {
+      display: inline-flex;
+      align-items: center;
+    }
+
+    .contact-row strong {
+      color: var(--text-dark);
+      font-weight: 600;
+      margin-right: 3px;
+    }
+
+    /* Intro */
+    .intro-box {
+      background: var(--bg-soft);
+      border-left: 3.5px solid var(--primary);
+      padding: 8px 12px;
+      margin-bottom: 14px;
+      font-size: 8.7pt;
+      color: var(--text-dark);
+      text-align: justify;
+      line-height: 1.42;
+    }
+
+    /* Section Headings */
+    h2.section-title {
+      font-size: 10.5pt;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      color: var(--primary);
+      border-bottom: 1.5px solid var(--border-line);
+      padding-bottom: 3px;
+      margin: 14px 0 9px;
+      break-after: avoid;
+    }
+
+    h2.section-title:first-of-type {
+      margin-top: 0;
+    }
+
+    /* Project Cards */
+    .project-card {
+      background: #ffffff;
+      border: 1px solid var(--border-line);
+      border-radius: 4px;
+      padding: 9px 12px;
+      margin-bottom: 10px;
+      break-inside: avoid;
+    }
+
+    .card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-bottom: 4px;
+    }
+
+    .project-title-group {
+      display: flex;
+      align-items: baseline;
+      gap: 6px;
+      flex-wrap: wrap;
+    }
+
+    .project-title {
+      font-size: 10pt;
+      font-weight: 800;
+      color: var(--primary);
+    }
+
+    .project-subtitle {
+      font-size: 8.5pt;
+      font-weight: 600;
+      color: var(--accent);
+    }
+
+    .project-badge {
+      font-size: 7.6pt;
+      font-weight: 700;
+      text-transform: uppercase;
+      color: var(--secondary);
+      background: var(--pill-bg);
+      border: 1px solid var(--border-line);
+      padding: 1px 6px;
+      border-radius: 3px;
+      white-space: nowrap;
+    }
+
+    /* Tags */
+    .tag-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 3px 5px;
+      margin-bottom: 6px;
+    }
+
+    .tag {
+      font-size: 7.4pt;
+      font-weight: 600;
+      background: var(--accent-subtle);
+      color: var(--accent);
+      padding: 1px 5px;
+      border-radius: 2px;
+      border: 1px solid rgba(11, 92, 171, 0.2);
+    }
+
+    .project-summary {
+      font-size: 8.5pt;
+      text-align: justify;
+      margin-bottom: 5px;
+      line-height: 1.4;
+    }
+
+    ul.project-highlights {
+      list-style-type: disc;
+      margin-left: 15px;
+      margin-bottom: 4px;
+    }
+
+    ul.project-highlights li {
+      font-size: 8.3pt;
+      margin-bottom: 2.5px;
+      text-align: justify;
+      line-height: 1.36;
+    }
+
+    ul.project-highlights li:last-child {
+      margin-bottom: 0;
+    }
+
+    ul.project-highlights li strong {
+      color: var(--text-dark);
+      font-weight: 600;
+    }
+
+    /* Architecture Block */
+    .arch-note {
+      font-size: 8pt;
+      background: #f8fafc;
+      border-left: 2.5px solid var(--accent);
+      padding: 4px 8px;
+      margin: 4px 0;
+      color: var(--secondary);
+      font-family: 'Liberation Mono', 'DejaVu Sans Mono', monospace;
+    }
+
+    /* Compact Grid for secondary projects */
+    .compact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+      margin-bottom: 10px;
+    }
+
+    .compact-card {
+      background: var(--bg-soft);
+      border: 1px solid var(--border-line);
+      border-radius: 3px;
+      padding: 7px 9px;
+      break-inside: avoid;
+    }
+
+    .compact-card h3 {
+      font-size: 8.8pt;
+      font-weight: 700;
+      color: var(--primary);
+      margin-bottom: 2px;
+    }
+
+    .compact-card p {
+      font-size: 8.1pt;
+      text-align: justify;
+      line-height: 1.34;
+      color: var(--text-body);
+    }
+
+    /* Skills Overview Table */
+    .tech-summary-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 6px 14px;
+      background: var(--bg-soft);
+      border: 1px solid var(--border-line);
+      border-radius: 4px;
+      padding: 9px 12px;
+      margin-bottom: 12px;
+      break-inside: avoid;
+    }
+
+    .tech-group dt {
+      font-size: 8.3pt;
+      font-weight: 700;
+      color: var(--primary);
+      margin-bottom: 1.5px;
+    }
+
+    .tech-group dd {
+      font-size: 8.1pt;
+      color: var(--text-muted);
+      line-height: 1.35;
+    }
+
+    footer.doc-footer {
+      border-top: 1px solid var(--border-line);
+      padding-top: 6px;
+      margin-top: 12px;
+      font-size: 7.8pt;
+      color: var(--text-muted);
+      text-align: center;
+    }
+
+    .page-break {
+      page-break-before: always;
+      break-before: page;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ==================== HEADER ==================== -->
+  <header class="doc-header">
+    <div class="header-top">
+      <h1>Ahmet Furkan Kurt</h1>
+      <div class="doc-subtitle">Engineering Project Portfolio — Architectural Decisions, Systems Design &amp; Production Implementations</div>
+    </div>
+    <div class="contact-row">
+      <span><strong>Location:</strong> Istanbul, Türkiye</span>
+      <span><strong>Email:</strong> <a href="mailto:afurkankurt@outlook.com">afurkankurt@outlook.com</a></span>
+      <span><strong>Portfolio:</strong> <a href="https://kurt.cool">kurt.cool</a></span>
+      <span><strong>GitHub:</strong> <a href="https://github.com/furkkurt">github.com/furkkurt</a></span>
+      <span><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/furkan-kurt-3660b7181/">furkan-kurt-3660b7181</a></span>
+      <span><strong>Education:</strong> Fırat Univ. B.Sc. Software Eng. (3.10/4.00) &amp; Oviedo CS</span>
+      <span><strong>Languages:</strong> English (YDS: 93/100 - C1/C2 Proficient)</span>
+    </div>
+  </header>
+
+  <div class="intro-box">
+    <strong>Portfolio Purpose &amp; Engineering Philosophy:</strong> This document supplements my résumé by detailing the concrete architectural decisions, design patterns, and engineering trade-offs behind my core projects. My core philosophy is that user interfaces, game engines, and backends should not be treated as isolated silos, but designed together as unified, resilient systems—combining domain-driven data models, deterministic event loops, low-latency telemetry, and containerized cloud deployment. Projects below are organized by architectural depth and technical complexity.
+  </div>
+
+  <!-- ==================== 1. ENGINE & HMI SYSTEMS ==================== -->
+  <h2 class="section-title">1. Engine Architecture, Human-Machine Interfaces (HMI) &amp; Simulation</h2>
+
+  <!-- PROJECT 1: TEMPLE ENGINE -->
+  <section class="project-card">
+    <div class="card-header">
+      <div class="project-title-group">
+        <span class="project-title">Temple Engine</span>
+        <span class="project-subtitle">— Browser-Based 3D Game Engine &amp; Visual Editor</span>
+      </div>
+      <span class="project-badge">Capstone Thesis • 2026</span>
+    </div>
+    <div class="tag-row">
+      <span class="tag">TypeScript</span>
+      <span class="tag">Three.js / WebGL</span>
+      <span class="tag">React</span>
+      <span class="tag">Zustand</span>
+      <span class="tag">cannon-es</span>
+      <span class="tag">ECS Architecture</span>
+      <span class="tag">EventBus</span>
+      <span class="tag">Vite</span>
+    </div>
+    <p class="project-summary">
+      A full-featured 3D game engine core and visual editor running entirely in the browser, built from scratch with modern web standards and inspired by Unity's productive workflow. Rather than a superficial demo, it is an exercise in decoupled engine architecture where rendering is strictly isolated behind an adapter layer.
+    </p>
+    <div class="arch-note">
+      Architecture: [React + Zustand Editor UI] ──API/Events──► [Pure TS Engine Core (ECS + EventBus + Loop)] ──Adapter──► [Three.js / WebGL]
+    </div>
+    <ul class="project-highlights">
+      <li><strong>Renderer-Agnostic Engine Core:</strong> Implemented Scene, Entity, Component, and System hierarchies in pure TypeScript with zero runtime dependency on Three.js. Three.js is positioned strictly as a swappable renderer adapter responsible only for Object3D synchronization, camera mapping, and WebGL draws.</li>
+      <li><strong>Deterministic Fixed-Timestep Loop:</strong> Decoupled variable frame rendering from simulation physics using an accumulator-based delta/fixed-timestep loop, preventing tunneling and jitter in cannon-es rigid-body collision simulations.</li>
+      <li><strong>Visual IDE &amp; State Management:</strong> Built an interactive editor with React and Zustand featuring a live scene hierarchy tree, 3D viewport with transformation gizmos (Translate/Rotate/Scale), dynamic component inspector, GLB asset loading, and Play/Stop modes with automated scene snapshot memory restoration.</li>
+      <li><strong>Engineering Outcome:</strong> Delivers desktop-grade developer ergonomics in a web environment; serializes scenes into clean, human-readable JSON capable of packaging into desktop binaries (via Electron/Tauri) or Android APKs.</li>
+    </ul>
+  </section>
+
+  <!-- PROJECT 2: REAL-TIME HAND GESTURE HMI -->
+  <section class="project-card">
+    <div class="card-header">
+      <div class="project-title-group">
+        <span class="project-title">Real-Time Hand Gesture Recognition &amp; HMI Input System</span>
+        <span class="project-subtitle">— Computer Vision-Based OS Controller</span>
+      </div>
+      <span class="project-badge">Computer Vision &amp; HMI • 2026</span>
+    </div>
+    <div class="tag-row">
+      <span class="tag">Python</span>
+      <span class="tag">OpenCV</span>
+      <span class="tag">MediaPipe (3D Landmarks)</span>
+      <span class="tag">Linux X11 (xdotool)</span>
+      <span class="tag">Tkinter Overlay HUD</span>
+      <span class="tag">HMI Architecture</span>
+    </div>
+    <p class="project-summary">
+      A low-latency, modular Human-Machine Interface (HMI) pipeline that tracks 3D hand joints from a standard webcam feed in real time and translates biometric gestures into native operating system keyboard and mouse events. Fully documented with an accompanying academic research paper.
+    </p>
+    <ul class="project-highlights">
+      <li><strong>3D Joint Tracking &amp; Palm Orientation Algorithm:</strong> Analyzes MediaPipe 3D landmark coordinates to calculate palm normal vectors in real time, automatically toggling between Typing Mode (palm facing forward) and Mouse Navigation Mode (palm facing backward).</li>
+      <li><strong>Chorded T9 Finger Typing State Machine:</strong> Designed a temporal state machine detecting thumb-to-finger tap counts (1-4 taps) with calibrated timing windows (`COMMIT_IDLE_MS`, `TAP_WINDOW_MS`), enabling full alphanumeric text entry and two-hand number counting.</li>
+      <li><strong>OS-Level Execution &amp; Telemetry HUD:</strong> Emits native Linux X11 inputs via `xdotool` directly to focused desktop applications with sub-frame latency. A transparent Tkinter on-screen display (Overlay HUD) renders live pinch thresholds and telemetry without stealing window focus.</li>
+      <li><strong>Industry Relevance:</strong> Offers hands-free, touchless control suitable for sterile medical consoles, aerospace ground stations, and industrial operator environments.</li>
+    </ul>
+  </section>
+
+  <!-- PROJECT 3: EMELTEK VR & SIMULATION -->
+  <section class="project-card">
+    <div class="card-header">
+      <div class="project-title-group">
+        <span class="project-title">VR Earthquake Drill &amp; 3D Interactive Simulation</span>
+        <span class="project-subtitle">— emeltek yazılım</span>
+      </div>
+      <span class="project-badge">VR &amp; Performance Optimization • 2025–2026</span>
+    </div>
+    <div class="tag-row">
+      <span class="tag">Unity</span>
+      <span class="tag">C#</span>
+      <span class="tag">Virtual Reality (VR)</span>
+      <span class="tag">Custom Shaders / GLSL</span>
+      <span class="tag">Render Pipeline Optimization</span>
+      <span class="tag">Physics Simulation</span>
+    </div>
+    <p class="project-summary">
+      An interactive 3D Virtual Reality training application that simulates realistic seismic tremors, structural debris hazards, and procedural evacuation protocols while measuring trainee response times.
+    </p>
+    <ul class="project-highlights">
+      <li><strong>Object-Oriented Physics &amp; Scenario Logic:</strong> Designed procedural tremor controllers, center-of-mass shifts for falling objects, and operator safe-zone validation algorithms in C# following OOP principles.</li>
+      <li><strong>Critical Performance Boost (24 FPS → 60 FPS):</strong> To eliminate VR simulation sickness, profiled and resolved GPU/CPU bottlenecks by combining meshes, minimizing draw calls, configuring static occlusion culling, and authoring custom lighting shaders—achieving a consistent 60 FPS (+150% improvement).</li>
+    </ul>
+  </section>
+
+  <!-- ==================== 2. ENTERPRISE BACKEND & ARCHITECTURE ==================== -->
+  <h2 class="section-title">2. Enterprise Backend Architecture, Distributed Services &amp; Data Integration</h2>
+
+  <!-- PROJECT 4: BOUTIQUE LAVINIA -->
+  <section class="project-card">
+    <div class="card-header">
+      <div class="project-title-group">
+        <span class="project-title">Boutique Lavinia</span>
+        <span class="project-subtitle">— Modular E-Commerce &amp; Automated Legacy Migration Engine</span>
+      </div>
+      <span class="project-badge">Enterprise Full-Stack Architecture</span>
+    </div>
+    <div class="tag-row">
+      <span class="tag">.NET 8</span>
+      <span class="tag">ASP.NET Core</span>
+      <span class="tag">PostgreSQL</span>
+      <span class="tag">Entity Framework Core</span>
+      <span class="tag">IdentityServer4 / JWT</span>
+      <span class="tag">Next.js</span>
+      <span class="tag">Docker Compose</span>
+      <span class="tag">Nginx</span>
+    </div>
+    <p class="project-summary">
+      A production-grade, modular monolith e-commerce platform addressing the digital modernization of an active retail business. The system's crowning engineering achievement is an automated ETL pipeline that performed a seamless migration from a legacy vendor with zero data loss.
+    </p>
+    <ul class="project-highlights">
+      <li><strong>Legacy Ticimax ETL Migration Pipeline:</strong> Architected a fault-tolerant import engine that parsed corrupt, inconsistently formatted Excel exports from the incumbent provider. Cleaned, normalized, and mapped 2,000+ SKU product catalogs, multi-tier hierarchical category trees, brand relationships, and customer records directly into relational PostgreSQL with 100% integrity.</li>
+      <li><strong>Modular Monolith &amp; Security:</strong> Fully isolated catalog, inventory, order processing, and invoicing modules behind well-defined domain boundaries. Enforced authentication and token issuance via IdentityServer4 and JWT.</li>
+      <li><strong>3-Tier Container Deployment:</strong> Packaged Nginx (reverse proxy with SSL termination), ASP.NET Core API, and a Next.js storefront within Docker Compose, enabling deterministic, single-command zero-downtime rollouts.</li>
+    </ul>
+  </section>
+
+  <!-- PROJECT 5: NEWSENGINE / FIKRIMCE -->
+  <section class="project-card">
+    <div class="card-header">
+      <div class="project-title-group">
+        <span class="project-title">NewsEngine (fikrimce.net)</span>
+        <span class="project-subtitle">— Clean Architecture &amp; CQRS Enterprise News Backend</span>
+      </div>
+      <span class="project-badge">Backend &amp; Domain-Driven Design</span>
+    </div>
+    <div class="tag-row">
+      <span class="tag">.NET 10</span>
+      <span class="tag">Clean Architecture</span>
+      <span class="tag">Domain-Driven Design (DDD)</span>
+      <span class="tag">CQRS</span>
+      <span class="tag">MediatR</span>
+      <span class="tag">FluentValidation</span>
+      <span class="tag">Serilog</span>
+      <span class="tag">Swagger / OpenAPI</span>
+      <span class="tag">Astro</span>
+    </div>
+    <p class="project-summary">
+      A highly structured backend engine built for a journalism education publishing portal, implementing textbook Clean Architecture, Domain-Driven Design (DDD), and explicit editorial life-cycle governance.
+    </p>
+    <ul class="project-highlights">
+      <li><strong>CQRS via MediatR Pipeline:</strong> Separated write operations (Commands: draft submission, editorial review, approval) from read operations (Queries: cached news feeds, metrics) into isolated handlers, ensuring high testability and single-responsibility compliance.</li>
+      <li><strong>Explicit Editorial Domain Life-Cycle:</strong> Implemented domain-level state machines governing article lifecycles (Draft → In Review → Approved → Published) alongside role-based access control (RBAC) and documented GDPR/KVKK compliance.</li>
+      <li><strong>Validation, Structured Logging &amp; Docs:</strong> Filtered malformed inputs before reaching domain services using FluentValidation pipeline behaviors. Integrated Serilog structured logging and exposed 100+ fully documented RESTful endpoints via Swagger/OpenAPI.</li>
+    </ul>
+  </section>
+
+  <!-- PROJECT 6: ASHE'S TOUCH (RUST) -->
+  <section class="project-card">
+    <div class="card-header">
+      <div class="project-title-group">
+        <span class="project-title">Ashe's Touch (eyeOfTheBeholder)</span>
+        <span class="project-subtitle">— 1.44 MB Size-Constrained Retro Adventure Game</span>
+      </div>
+      <span class="project-badge">Systems &amp; Game Programming (Rust) • 2026</span>
+    </div>
+    <div class="tag-row">
+      <span class="tag">Rust 2021</span>
+      <span class="tag">Macroquad</span>
+      <span class="tag">Custom quad-snd Patch</span>
+      <span class="tag">LTO (Link-Time Optimization)</span>
+      <span class="tag">UPX Compression</span>
+      <span class="tag">Linux X11/PipeWire/ALSA</span>
+      <span class="tag">Windows Cross-Compile</span>
+    </div>
+    <p class="project-summary">
+      A systems programming project built for the 1.44 MB Game Jam, where the entire standalone executable—including graphics, sound generation, level geometry, and game engine—strictly remains under 1,474,560 bytes (the size of a 3.5" floppy disk).
+    </p>
+    <ul class="project-highlights">
+      <li><strong>Aggressive Binary Footprint Optimization:</strong> Configured release profiles with `opt-level = "z"`, fat Link-Time Optimization (`lto = "fat"`), single codegen units, panic abortion, and symbol stripping, compressed via UPX to compress the entire engine and assets under the megabyte barrier.</li>
+      <li><strong>Procedural In-Memory Audio Synthesis:</strong> Rather than embedding heavy audio waveforms, patched the `quad-snd` crate to generate algorithmic 8-bit sound effects procedurally at runtime using mathematical sine/square synthesis with 0 KB file footprint.</li>
+      <li><strong>Dual-Target Cross-Compilation:</strong> Developed natively on Void Linux (X11, ALSA, PipeWire) with automated MinGW cross-compilation scripts (`CROSS_WINDOWS=1`) delivering verified dual-platform release binaries.</li>
+    </ul>
+  </section>
+
+  <!-- ==================== 3. AI, MOBILE & WEB PLATFORMS ==================== -->
+  <h2 class="section-title">3. AI Tooling, Cross-Platform Mobile &amp; Production Web Platforms</h2>
+
+  <!-- PROJECT 7: LLM EVALUATION DASHBOARD -->
+  <section class="project-card">
+    <div class="card-header">
+      <div class="project-title-group">
+        <span class="project-title">LLM Code Evaluation Dashboard &amp; Benchmarking Workstation</span>
+        <span class="project-subtitle">— llm-eval</span>
+      </div>
+      <span class="project-badge">R&amp;D &amp; MLOps Tooling</span>
+    </div>
+    <div class="tag-row">
+      <span class="tag">Python</span>
+      <span class="tag">FastAPI</span>
+      <span class="tag">Streamlit</span>
+      <span class="tag">SQLite</span>
+      <span class="tag">Kotlin &amp; Flutter Toolchains</span>
+      <span class="tag">Detekt Static Analysis</span>
+      <span class="tag">Benchmarking Pipeline</span>
+    </div>
+    <p class="project-summary">
+      An automated research and evaluation workstation that benchmarks generative LLM outputs against identical coding prompts by running them through real compiler toolchains and static analysis suites.
+    </p>
+    <ul class="project-highlights">
+      <li><strong>Objective Compiler-Driven Scoring:</strong> Rather than relying on subjective text embeddings, executes headless Kotlin and Flutter compiler tools and Detekt static analysis rules to measure compilability, code smells, and instruction adherence.</li>
+      <li><strong>FastAPI &amp; Streamlit Suite:</strong> Created an interactive workbench to trigger batch evaluations across models, archiving metrics in SQLite and graphing historical model drift.</li>
+    </ul>
+  </section>
+
+  <!-- PROJECT 8: BLOG THUMBNAIL GENERATOR -->
+  <section class="project-card">
+    <div class="card-header">
+      <div class="project-title-group">
+        <span class="project-title">Blog Thumbnail Generator — AI Media Pipeline</span>
+        <span class="project-subtitle">— thumbnail-generator</span>
+      </div>
+      <span class="project-badge">AI Integration &amp; Monorepo</span>
+    </div>
+    <div class="tag-row">
+      <span class="tag">Astro (Node Adapter)</span>
+      <span class="tag">.NET 10 API</span>
+      <span class="tag">OpenRouter</span>
+      <span class="tag">Replicate (Flux)</span>
+      <span class="tag">Tailwind CSS</span>
+      <span class="tag">Monorepo Architecture</span>
+    </div>
+    <p class="project-summary">
+      A full-stack monorepo application that automates the generation of 16:9 featured blog artwork directly from raw article text using chained generative AI models.
+    </p>
+    <ul class="project-highlights">
+      <li><strong>Secure Server-Side AI Proxy:</strong> Insulates browser clients from third-party AI keys; the .NET 10 backend validates aspect ratios (`SendAspectRatio: 16:9`), enforces strict CORS, and handles upstream rate limits.</li>
+      <li><strong>Two-Stage Prompt-to-Image Pipeline:</strong> Converts Turkish article prose into structured English visual descriptions via OpenRouter (Gemini) before rendering high-fidelity imagery via a fine-tuned Flux diffusion model on Replicate.</li>
+    </ul>
+  </section>
+
+  <!-- PROJECT 9: RENAZTEKNIK -->
+  <section class="project-card">
+    <div class="card-header">
+      <div class="project-title-group">
+        <span class="project-title">renazteknik.com — High-Performance Commercial Platform</span>
+        <span class="project-subtitle">— Live Business Product</span>
+      </div>
+      <span class="project-badge">100/100 Lighthouse &amp; SEO</span>
+    </div>
+    <div class="tag-row">
+      <span class="tag">Astro</span>
+      <span class="tag">Tailwind CSS</span>
+      <span class="tag">Firebase Firestore</span>
+      <span class="tag">Google Ads Conversion</span>
+      <span class="tag">Technical SEO</span>
+    </div>
+    <p class="project-summary">
+      An active corporate customer acquisition site for an engineering and plumbing firm in Samsun, engineered to convert organic and paid search traffic into booked service appointments.
+    </p>
+    <ul class="project-highlights">
+      <li><strong>Flawless 100/100 PageSpeed &amp; Technical SEO:</strong> Delivered instantaneous page loads with zero extraneous JavaScript runtime using Astro, achieving perfect 100 scores across Performance, Accessibility, Best Practices, and SEO (+500% organic traffic surge).</li>
+      <li><strong>Conversion Engine &amp; Dynamic Reviews:</strong> Integrated emergency call-to-action handlers, Google Ads conversion tracking, and live customer reviews backed by Firebase Firestore.</li>
+    </ul>
+  </section>
+
+  <!-- PROJECT 10: FLUTTER APPS -->
+  <section class="project-card">
+    <div class="card-header">
+      <div class="project-title-group">
+        <span class="project-title">Flutter Cross-Platform Mobile Applications</span>
+        <span class="project-subtitle">— Herkesyesin &amp; libreQuiz</span>
+      </div>
+      <span class="project-badge">Mobile Engineering</span>
+    </div>
+    <div class="tag-row">
+      <span class="tag">Flutter</span>
+      <span class="tag">Dart</span>
+      <span class="tag">Riverpod / Provider</span>
+      <span class="tag">Firebase (Firestore, Auth, Storage)</span>
+      <span class="tag">RESTful API</span>
+    </div>
+    <ul class="project-highlights">
+      <li><strong>Herkesyesin (Multi-Vendor Food Delivery Platform):</strong> Developed at 208 Software Solutions; refactored 50+ feature modules with Clean Code and Riverpod state management to reduce runtime crashes by 70%, integrating live courier tracking and touch UX.</li>
+      <li><strong>libreQuiz (Multiplayer Real-Time Quiz Platform):</strong> Built during Sia Teknoloji internship; engineered a room-based multiplayer state engine synchronizing questions and scoring across mobile and web via Firebase.</li>
+    </ul>
+  </section>
+
+  <!-- ==================== 4. COMPLEMENTARY SYSTEMS & TOOLS ==================== -->
+  <h2 class="section-title">4. Complementary Systems, Tooling &amp; Open Source</h2>
+
+  <div class="compact-grid">
+    <div class="compact-card">
+      <h3>ceylinOverlay — Linux X11 Desktop Video Overlay</h3>
+      <p>
+        <strong>Python, PyQt5, OpenCV (headless), python-xlib:</strong> A lightweight, hardware-accelerated video loop overlay utility rendering over the active X11 desktop manager during livestreams and presentations.
+      </p>
+    </div>
+    <div class="compact-card">
+      <h3>freelancer-finder — Rule-Based Opportunity Scoring CLI</h3>
+      <p>
+        <strong>Python, REST API, Pytest:</strong> An automated CLI and unit-tested scoring pipeline that parses API job feeds, ranking opportunities based on skill alignment, budget thresholds, and competition density.
+      </p>
+    </div>
+    <div class="compact-card">
+      <h3>MiniLan — Compiler Design &amp; Lexical Analyzer</h3>
+      <p>
+        <strong>Lexical Analysis, Java, Automata Theory:</strong> An academic compiler engineering project implementing deterministic finite automata to tokenize grammar, parse syntax, and generate abstract syntax trees (AST).
+      </p>
+    </div>
+    <div class="compact-card">
+      <h3>Linux Environment &amp; Browser Automation Scripts</h3>
+      <p>
+        <strong>Void/Arch Linux, i3wm, qutebrowser:</strong> A documented minimalist desktop environment (rice) alongside published open-source automation scripts including <code>qutebrowserRES</code> and <code>Watch Later</code>.
+      </p>
+    </div>
+  </div>
+
+  <!-- ==================== 5. TECH SUMMARY ==================== -->
+  <h2 class="section-title">5. Comprehensive Technical Matrix</h2>
+
+  <dl class="tech-summary-grid">
+    <div class="tech-group">
+      <dt>Languages &amp; Core Principles</dt>
+      <dd>C#, TypeScript, JavaScript (ES6+), Dart, Python, Rust, C++, Java, SQL, Bash, OOP</dd>
+    </div>
+    <div class="tech-group">
+      <dt>User Interfaces (UI/HMI) &amp; Web</dt>
+      <dd>React, Next.js, Astro, Flutter, Tailwind CSS, PyQt5, Tkinter, Streamlit, HTML5/CSS3</dd>
+    </div>
+    <div class="tech-group">
+      <dt>Backend, Architecture &amp; Distributed Systems</dt>
+      <dd>.NET 8/10, ASP.NET Core, EF Core, Clean Architecture, DDD, CQRS, MediatR, FastAPI, RESTful</dd>
+    </div>
+    <div class="tech-group">
+      <dt>3D, Simulation, Physics &amp; Game Engines</dt>
+      <dd>Unity (C#, VR, Shaders), Three.js, WebGL, cannon-es, ECS, Macroquad (Rust), Phaser.js</dd>
+    </div>
+    <div class="tech-group">
+      <dt>Computer Vision, AI &amp; Databases</dt>
+      <dd>OpenCV, MediaPipe 3D, PostgreSQL, SQLite, Firebase Firestore, LLM Benchmark, Flux</dd>
+    </div>
+    <div class="tech-group">
+      <dt>Systems, DevOps, Testing &amp; Methods</dt>
+      <dd>Linux (Void/Arch, X11, PipeWire), Docker, Nginx, Git, CI/CD, Agile / Scrum, TDD, Detekt</dd>
+    </div>
+  </dl>
+
+  <footer class="doc-footer">
+    Ahmet Furkan Kurt — Engineering Project Portfolio — 2026 — Contact: afurkankurt@outlook.com | Live Portfolio: <a href="https://kurt.cool">kurt.cool</a> | Source Code: <a href="https://github.com/furkkurt">github.com/furkkurt</a>
+  </footer>
+
+</body>
+</html>

@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Ahmet Furkan Kurt - Resume / CV</title>
+  <style>
+    @page {
+      size: A4 portrait;
+      margin: 9.5mm 13mm 9.5mm 13mm;
+    }
+
+    :root {
+      --primary: #0f2742;
+      --accent: #0b5cab;
+      --text-dark: #111827;
+      --text-body: #1f2937;
+      --text-muted: #4b5563;
+      --border-line: #cbd5e1;
+      --tag-bg: #f1f5f9;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html, body {
+      font-family: 'Liberation Sans', 'DejaVu Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+      font-size: 8.4pt;
+      line-height: 1.33;
+      color: var(--text-body);
+      background: #ffffff;
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    /* Header */
+    header {
+      border-bottom: 2px solid var(--primary);
+      padding-bottom: 5px;
+      margin-bottom: 6px;
+    }
+
+    .header-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      margin-bottom: 2px;
+    }
+
+    h1 {
+      font-size: 17pt;
+      font-weight: 800;
+      color: var(--primary);
+      letter-spacing: -0.02em;
+      text-transform: uppercase;
+    }
+
+    .headline {
+      font-size: 9pt;
+      font-weight: 700;
+      color: var(--accent);
+    }
+
+    .contact-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 3px 11px;
+      font-size: 8pt;
+      color: var(--text-muted);
+    }
+
+    .contact-row span {
+      display: inline-flex;
+      align-items: center;
+    }
+
+    .contact-row strong {
+      color: var(--text-dark);
+      font-weight: 600;
+      margin-right: 3px;
+    }
+
+    /* Section */
+    section {
+      margin-bottom: 6.5px;
+    }
+
+    h2 {
+      font-size: 9.1pt;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      color: var(--primary);
+      border-bottom: 1.2px solid var(--border-line);
+      padding-bottom: 1.5px;
+      margin-bottom: 4px;
+    }
+
+    .summary-text {
+      font-size: 8.35pt;
+      color: var(--text-body);
+      text-align: justify;
+      line-height: 1.35;
+    }
+
+    /* Skills List (ATS linear key-value) */
+    .skills-container {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .skill-row {
+      font-size: 8.25pt;
+      line-height: 1.32;
+    }
+
+    .skill-category {
+      font-weight: 700;
+      color: var(--primary);
+    }
+
+    /* Experience & Project Items */
+    .entry {
+      margin-bottom: 4px;
+      break-inside: avoid;
+    }
+
+    .entry:last-child {
+      margin-bottom: 0;
+    }
+
+    .entry-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-bottom: 1px;
+    }
+
+    .entry-title-group {
+      font-size: 8.65pt;
+    }
+
+    .entry-role {
+      font-weight: 700;
+      color: var(--text-dark);
+    }
+
+    .entry-org {
+      font-weight: 700;
+      color: var(--accent);
+    }
+
+    .entry-tech {
+      font-size: 7.9pt;
+      font-weight: 600;
+      color: var(--accent);
+      margin-bottom: 1.5px;
+    }
+
+    .entry-meta {
+      font-size: 7.85pt;
+      font-weight: 600;
+      color: var(--text-muted);
+      white-space: nowrap;
+      margin-left: 8px;
+    }
+
+    ul.bullets {
+      list-style-type: disc;
+      margin-left: 13px;
+      margin-top: 1px;
+    }
+
+    ul.bullets li {
+      font-size: 8.25pt;
+      margin-bottom: 1px;
+      text-align: justify;
+      line-height: 1.32;
+    }
+
+    ul.bullets li:last-child {
+      margin-bottom: 0;
+    }
+
+    ul.bullets li strong {
+      color: var(--text-dark);
+      font-weight: 600;
+    }
+
+    .page-break {
+      page-break-before: always;
+      break-before: page;
+    }
+
+    /* Education compact */
+    .edu-entry {
+      margin-bottom: 2.5px;
+      break-inside: avoid;
+    }
+
+    .edu-entry:last-child {
+      margin-bottom: 0;
+    }
+
+    .edu-details {
+      font-size: 8.1pt;
+      color: var(--text-body);
+    }
+
+    /* Info List at bottom of Page 2 */
+    .info-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
+      font-size: 8.3pt;
+    }
+
+    .info-list li strong {
+      color: var(--primary);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ==================== PAGE 1 ==================== -->
+  <header>
+    <div class="header-top">
+      <h1>Ahmet Furkan Kurt</h1>
+      <div class="headline">Software Engineer | Full-Stack, UI/HMI Systems, 3D Simulation &amp; Clean Architecture</div>
+    </div>
+    <div class="contact-row">
+      <span><strong>Location:</strong> Istanbul, Türkiye</span>
+      <span><strong>Phone:</strong> +90 552 248 41 38</span>
+      <span><strong>Email:</strong> <a href="mailto:afurkankurt@outlook.com">afurkankurt@outlook.com</a></span>
+      <span><strong>Portfolio:</strong> <a href="https://kurt.cool">kurt.cool</a></span>
+      <span><strong>GitHub:</strong> <a href="https://github.com/furkkurt">github.com/furkkurt</a></span>
+      <span><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/furkan-kurt-3660b7181/">linkedin.com/in/furkan-kurt-3660b7181</a></span>
+    </div>
+  </header>
+
+  <section>
+    <h2>Professional Summary</h2>
+    <p class="summary-text">
+      Software Engineer with a B.Sc. in Software Engineering from Fırat University (GPA: 3.10/4.00) and international Computer Science training at Universidad de Oviedo (Spain). Specializes in <strong>Object-Oriented Programming (OOP)</strong>, layered system architecture (Clean Architecture, DDD, CQRS), and high-performance <strong>User Interface (UI/HMI)</strong> engineering. Proven track record of shipping end-to-end systems across C#/.NET, TypeScript/React, Dart/Flutter, Python, and Rust—ranging from a browser-based 3D game engine and visual editor to VR simulations, real-time computer vision HMI input pipelines (OpenCV/MediaPipe), and containerized enterprise backends. Linux-native engineer with C1/C2 English proficiency (<strong>YDS: 93/100</strong>) and strong Agile/Scrum execution.
+    </p>
+  </section>
+
+  <section>
+    <h2>Technical Skills</h2>
+    <div class="skills-container">
+      <div class="skill-row">
+        <span class="skill-category">Languages &amp; Core OOP:</span>
+        C#, TypeScript, JavaScript (ES6+), Dart, Python, Rust, C++, Java, SQL, Bash, HTML5, CSS3
+      </div>
+      <div class="skill-row">
+        <span class="skill-category">UI/HMI, Mobile &amp; 3D Simulation:</span>
+        Flutter (Riverpod, Provider), React, Next.js, Astro, Unity (C#, 3D/VR, Custom Shaders), Three.js, WebGL, Phaser.js, cannon-es, Zustand, Tailwind CSS, PyQt5, Tkinter, Streamlit, Cordova
+      </div>
+      <div class="skill-row">
+        <span class="skill-category">Backend &amp; Software Architecture:</span>
+        .NET 8 / .NET 10, ASP.NET Core, Entity Framework Core, Clean Architecture, Domain-Driven Design (DDD), CQRS, MediatR, FastAPI, Node.js, RESTful APIs, IdentityServer4, JWT, FluentValidation, Serilog, Swagger/OpenAPI
+      </div>
+      <div class="skill-row">
+        <span class="skill-category">Databases, Computer Vision &amp; AI:</span>
+        PostgreSQL, SQLite, Firebase (Firestore, Auth, Storage), OpenCV, MediaPipe (3D Hand/Gesture Tracking), LLM Benchmarking &amp; Evaluation Pipelines, OpenRouter, Replicate (Flux), Static Analysis (Detekt, ESLint)
+      </div>
+      <div class="skill-row">
+        <span class="skill-category">Systems, DevOps &amp; Methodologies:</span>
+        Linux (Void/Arch, i3wm, X11, xdotool, ALSA/PipeWire), Docker, Docker Compose, Nginx, Git, CI/CD, Self-Hosted VPS, Agile / Scrum, Design Patterns (ECS, Adapter), Automata &amp; Compiler Theory
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Professional Experience</h2>
+
+    <div class="entry">
+      <div class="entry-header">
+        <div class="entry-title-group">
+          <span class="entry-role">Mobile &amp; Frontend Software Engineer (Part-Time)</span> — <span class="entry-org">208 Software Solutions</span>
+        </div>
+        <div class="entry-meta">Dec 2025 – Apr 2026 | Istanbul, Türkiye</div>
+      </div>
+      <ul class="bullets">
+        <li>Engineered scalable cross-platform Flutter mobile applications, including the multi-vendor food delivery platform <em>Herkesyesin</em>, utilizing Provider/Riverpod state management and RESTful API integrations.</li>
+        <li>Refactored 50+ feature modules using Clean Code and modular architecture principles, <strong>reducing runtime defect rates by 70%</strong> and streamlining real-time order tracking and touch UI responsiveness.</li>
+      </ul>
+    </div>
+
+    <div class="entry">
+      <div class="entry-header">
+        <div class="entry-title-group">
+          <span class="entry-role">Unity &amp; 3D Simulation Developer (Software Engineering Intern)</span> — <span class="entry-org">emeltek yazılım</span>
+        </div>
+        <div class="entry-meta">Sep 2025 – Feb 2026 | Elazığ, Türkiye</div>
+      </div>
+      <ul class="bullets">
+        <li>Developed an interactive 3D <strong>Virtual Reality (VR) Earthquake Drill</strong> training simulation in Unity (C#), designing object-oriented scene interactions, spatial physics mechanics, and intuitive operator interfaces.</li>
+        <li>Implemented custom lighting shaders, post-processing tuning, and render pipeline optimizations, boosting simulation frame rate from <strong>24 FPS to 60 FPS (+150% performance gain)</strong>.</li>
+      </ul>
+    </div>
+
+    <div class="entry">
+      <div class="entry-header">
+        <div class="entry-title-group">
+          <span class="entry-role">Full-Stack Web Developer (Software Engineering Intern)</span> — <span class="entry-org">SmartMessage</span>
+        </div>
+        <div class="entry-meta">Aug 2025 – Oct 2025 | Istanbul, Türkiye</div>
+      </div>
+      <ul class="bullets">
+        <li>Integrated 10+ RESTful API endpoints into a production enterprise web application, optimizing asynchronous data fetching and caching to <strong>reduce query latency by ~2000ms</strong>.</li>
+        <li>Built a high-volume query, dynamic filtering, and server/client-side pagination system for the TİTCK licensed pharmaceutical dataset.</li>
+      </ul>
+    </div>
+
+    <div class="entry">
+      <div class="entry-header">
+        <div class="entry-title-group">
+          <span class="entry-role">Software Engineering &amp; Informatics Instructor</span> — <span class="entry-org">Saksı Kampüs &amp; AKİL Schools</span>
+        </div>
+        <div class="entry-meta">Jul 2023 – Present | Istanbul, Türkiye</div>
+      </div>
+      <ul class="bullets">
+        <li>Delivered hands-on instruction, curriculum design, and code-review mentorship in Automata Theory, Formal Languages, Data Structures &amp; Algorithms, Object-Oriented Programming (OOP), and Agile/Scrum workflows.</li>
+      </ul>
+    </div>
+
+    <div class="entry">
+      <div class="entry-header">
+        <div class="entry-title-group">
+          <span class="entry-role">Cross-Platform Mobile Developer (Software Engineering Intern)</span> — <span class="entry-org">Sia Teknoloji</span>
+        </div>
+        <div class="entry-meta">Sep 2024 – Oct 2024 | Elazığ, Türkiye</div>
+      </div>
+      <ul class="bullets">
+        <li>Architected the room-based real-time multiplayer session synchronization and scalable question management engine for <em>libreQuiz</em> across mobile and web using Flutter and Firebase.</li>
+      </ul>
+    </div>
+
+    <div class="entry">
+      <div class="entry-header">
+        <div class="entry-title-group">
+          <span class="entry-role">Frontend &amp; Web Game Systems Developer (Part-Time, Remote)</span> — <span class="entry-org">LAYZR.GG</span>
+        </div>
+        <div class="entry-meta">Apr 2023 – Oct 2023 | Munich, Germany</div>
+      </div>
+      <ul class="bullets">
+        <li>Collaborated in a distributed international team to build the <em>Streamtopia</em> interactive Twitch streamer overlay prototype and a Next.js + Phaser.js service dashboard, shipping 20+ browser-based game prototypes.</li>
+      </ul>
+    </div>
+
+    <div class="entry">
+      <div class="entry-header">
+        <div class="entry-title-group">
+          <span class="entry-role">Unity Level &amp; Editor Tools Developer (Part-Time)</span> — <span class="entry-org">Twimh Games</span>
+        </div>
+        <div class="entry-meta">Oct 2022 – Feb 2023 | Istanbul, Türkiye</div>
+      </div>
+      <ul class="bullets">
+        <li>Created custom Unity (C#) editor tooling and reusable scene components to accelerate level design workflows and asset placement.</li>
+      </ul>
+    </div>
+
+    <div class="entry">
+      <div class="entry-header">
+        <div class="entry-title-group">
+          <span class="entry-role">Founder &amp; Indie Game Developer</span> — <span class="entry-org">makinDAGames</span>
+        </div>
+        <div class="entry-meta">Jul 2020 – Present | Istanbul, Türkiye</div>
+      </div>
+      <ul class="bullets">
+        <li>Designed, developed, and published <strong>14+ mobile and web games</strong> across Google Play, itch.io, Amazon Appstore, and the web (1,000+ organic downloads), owning gameplay architecture, UI/UX, Android packaging, and Linux VPS CI/CD deployment.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section>
+    <h2>Education</h2>
+    <div class="edu-entry">
+      <div class="entry-header">
+        <div class="entry-title-group">
+          <span class="entry-role">Fırat University</span> — <span class="entry-org">B.Sc. in Software Engineering</span>
+        </div>
+        <div class="entry-meta">Sep 2021 – Jul 2026 | Elazığ, Türkiye</div>
+      </div>
+      <div class="edu-details">
+        <strong>GPA:</strong> 3.10 / 4.00 • <strong>Capstone Thesis:</strong> <em>Temple Engine</em> — Browser-Based 3D Game Engine &amp; Visual Editor built with TypeScript and Three.js, supporting desktop (EXE) and mobile (APK) export.
+      </div>
+    </div>
+
+    <div class="edu-entry">
+      <div class="entry-header">
+        <div class="entry-title-group">
+          <span class="entry-role">Universidad de Oviedo</span> — <span class="entry-org">B.Sc. Exchange Program in Computer Science</span>
+        </div>
+        <div class="entry-meta">Sep 2023 – Jun 2024 | Oviedo, Spain</div>
+      </div>
+      <div class="edu-details">
+        Completed one full academic year of English-taught Computer Science coursework, software architecture, and systems engineering in Spain.
+      </div>
+    </div>
+
+    <div class="edu-entry">
+      <div class="entry-header">
+        <div class="entry-title-group">
+          <span class="entry-role">Anadolu University</span> — <span class="entry-org">B.Sc. in Management Information Systems (Open Education)</span>
+        </div>
+        <div class="entry-meta">Sep 2026 – Present</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== PAGE 2 ==================== -->
+  <div class="page-break"></div>
+
+  <section>
+    <h2>Selected Engineering &amp; Architecture Projects</h2>
+
+    <div class="entry">
+      <div class="entry-header">
+        <div class="entry-title-group">
+          <span class="entry-role">Temple Engine</span> — <span class="entry-org">Browser-Based 3D Game Engine &amp; Visual Editor</span>
+        </div>
+        <div class="entry-meta">Capstone Thesis | 2026</div>
+      </div>
+      <div class="entry-tech">Tech Stack: TypeScript, Three.js, WebGL, React, Zustand, cannon-es, Vite, ECS Architecture</div>
+      <ul class="bullets">
+        <li><strong>Renderer-Agnostic Engine Core:</strong> Engineered a decoupled Entity-Component-System (ECS) architecture, scene graph, event bus, and deterministic fixed-timestep game loop in pure TypeScript, isolating Three.js strictly behind a renderer adapter.</li>
+        <li><strong>Visual HMI/Editor Environment:</strong> Built a Unity-style visual editor using React and Zustand featuring a scene hierarchy tree, interactive 3D viewport, dynamic property inspector, transform gizmos, GLB model importer, cannon-es rigid-body physics, and Play/Stop state snapshot recovery.</li>
+      </ul>
+    </div>
+
+    <div class="entry">
+      <div class="entry-header">
+        <div class="entry-title-group">
+          <span class="entry-role">Real-Time Hand Gesture Recognition &amp; HMI Input System</span> — <span class="entry-org">Computer Vision &amp; Desktop Control</span>
+        </div>
+        <div class="entry-meta">Computer Vision &amp; HMI | 2026</div>
+      </div>
+      <div class="entry-tech">Tech Stack: Python, OpenCV, MediaPipe (3D Hand Landmarks), Linux X11 (xdotool), Tkinter Overlay HUD</div>
+      <ul class="bullets">
+        <li><strong>Low-Latency Gesture Pipeline:</strong> Built a real-time computer vision pipeline analyzing 3D hand landmarks via MediaPipe to recognize multi-tap finger pinch gestures (chorded T9 typing), two-hand number counting, and palm-orientation cursor tracking.</li>
+        <li><strong>OS-Level X11 Execution &amp; Overlay HUD:</strong> Translated recognized gestures directly into native Linux X11 keyboard and mouse events via <code>xdotool</code>, accompanied by a transparent on-screen calibration and telemetry HUD.</li>
+      </ul>
+    </div>
+
+    <div class="entry">
+      <div class="entry-header">
+        <div class="entry-title-group">
+          <span class="entry-role">Boutique Lavinia</span> — <span class="entry-org">Modular E-Commerce &amp; Automated Data Migration Platform</span>
+        </div>
+        <div class="entry-meta">Full-Stack Architecture</div>
+      </div>
+      <div class="entry-tech">Tech Stack: .NET 8, ASP.NET Core, PostgreSQL, Entity Framework Core, IdentityServer4, JWT, Next.js, Docker Compose, Nginx</div>
+      <ul class="bullets">
+        <li>Architected a SimplCommerce-based modular monolith featuring catalog, inventory, cart, invoicing, and IdentityServer4/JWT authentication, deployed via a 3-tier Docker Compose stack (Nginx reverse proxy, .NET 8 API, Next.js storefront).</li>
+        <li>Engineered an automated ETL migration pipeline that parsed, sanitized, and imported 2,000+ legacy Ticimax Excel records (hierarchical category trees, brands, users, and products) into PostgreSQL with zero data loss.</li>
+      </ul>
+    </div>
+
+    <div class="entry">
+      <div class="entry-header">
+        <div class="entry-title-group">
+          <span class="entry-role">NewsEngine (fikrimce.net)</span> — <span class="entry-org">Enterprise News Portal Backend Architecture</span>
+        </div>
+        <div class="entry-meta">Backend &amp; Domain Design</div>
+      </div>
+      <div class="entry-tech">Tech Stack: .NET 10, Clean Architecture, DDD, CQRS, MediatR, FluentValidation, Serilog, Swagger/OpenAPI, Astro, Docker</div>
+      <ul class="bullets">
+        <li>Designed a Domain-Driven Design (DDD) and Clean Architecture backend managing multi-stage editorial workflows (draft, review, approval), role-based access control (RBAC), and GDPR/KVKK compliance.</li>
+        <li>Implemented CQRS command/query separation via MediatR, request validation with FluentValidation, structured logging with Serilog, and 100+ Swagger/OpenAPI-documented RESTful endpoints consumed by an Astro frontend.</li>
+      </ul>
+    </div>
+
+    <div class="entry">
+      <div class="entry-header">
+        <div class="entry-title-group">
+          <span class="entry-role">LLM Code Evaluation Dashboard</span> — <span class="entry-org">Automated Compiler &amp; Static Analysis Benchmarking Workstation</span>
+        </div>
+        <div class="entry-meta">R&amp;D &amp; Tooling</div>
+      </div>
+      <div class="entry-tech">Tech Stack: Python, FastAPI, Streamlit, SQLite, Kotlin, Flutter, Detekt Static Analysis</div>
+      <ul class="bullets">
+        <li>Constructed an automated benchmarking platform that evaluates LLM-generated code across identical prompts by executing real Kotlin and Flutter compiler toolchains and static analysis (Detekt), scoring outputs on compilability, code quality, and instruction adherence.</li>
+      </ul>
+    </div>
+
+    <div class="entry">
+      <div class="entry-header">
+        <div class="entry-title-group">
+          <span class="entry-role">Ashe's Touch</span> — <span class="entry-org">1.44 MB Size-Constrained Retro Adventure Game</span>
+        </div>
+        <div class="entry-meta">Systems &amp; Game Programming | 2026</div>
+      </div>
+      <div class="entry-tech">Tech Stack: Rust, Macroquad, Custom Audio Patch (quad-snd), LTO/UPX Compression, Linux (X11/ALSA/PipeWire) &amp; Windows</div>
+      <ul class="bullets">
+        <li>Engineered a retro adventure game in Rust for the 1.44 MB Game Jam, applying aggressive compiler optimizations (fat LTO, symbol stripping, custom audio synthesis patches, and UPX compression) to fit the entire cross-platform Linux (X11/ALSA/PipeWire) and Windows executable plus assets under 1,474,560 bytes.</li>
+      </ul>
+    </div>
+
+    <div class="entry">
+      <div class="entry-header">
+        <div class="entry-title-group">
+          <span class="entry-role">Blog Thumbnail Generator &amp; renazteknik.com</span> — <span class="entry-org">AI Image Generation &amp; Commercial Web</span>
+        </div>
+        <div class="entry-meta">AI Integration &amp; Production Web</div>
+      </div>
+      <div class="entry-tech">Tech Stack: .NET 10, Astro, Tailwind CSS, OpenRouter, Replicate (Flux), Firebase Firestore, SEO, Google Ads</div>
+      <ul class="bullets">
+        <li><strong>AI Thumbnail Monorepo:</strong> Built an Astro + .NET 10 monorepo that converts Turkish articles into English visual prompts via OpenRouter and generates 16:9 thumbnails via Replicate (Flux), keeping third-party API keys isolated behind a server-side proxy.</li>
+        <li><strong>renazteknik.com:</strong> Delivered a live commercial platform achieving <strong>100/100 Google PageSpeed &amp; SEO</strong> scores, integrating Firestore customer reviews and Google Ads conversion tracking to drive a 500% increase in organic traffic.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section>
+    <h2>Complementary Systems, Tooling &amp; Open Source</h2>
+    <ul class="bullets">
+      <li><strong>Desktop Video Overlay Tool (ceylinOverlay):</strong> Built a lightweight Linux X11 desktop video overlay utility using Python, PyQt5, headless OpenCV, and <code>python-xlib</code>.</li>
+      <li><strong>Compiler Design, Graphics Shaders &amp; Embedded C++:</strong> Implemented a lexical/syntax analyzer for the <em>MiniLan</em> language; created custom Unity lighting shaders and multi-target camera controllers; programmed Arduino (Arduboy/OLED) hardware prototypes in C/C++.</li>
+      <li><strong>Linux Desktop Environment &amp; Open-Source Extensions:</strong> Maintained a documented Void/Arch Linux environment (i3wm, picom, dunst, mpv, qutebrowser) and authored open-source browser automation scripts (<code>qutebrowserRES</code>, <code>Watch Later</code>).</li>
+      <li><strong>Rule-Based Opportunity Scoring CLI (freelancer-finder):</strong> Developed a Python CLI and unit-tested scoring engine that filters and ranks API job feeds by technical persona fit, budget thresholds, and competition metrics.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>Languages, Standardized Exams &amp; Additional Information</h2>
+    <ul class="info-list">
+      <li><strong>Languages:</strong> Turkish (Native) • <strong>English: Advanced / Proficient (C1/C2 — YDS Score: 93 / 100</strong>, Jul 2026) • Spanish: Pre-Intermediate (B1 — 1 academic year in Spain)</li>
+      <li><strong>Standardized Exams:</strong> YDS (National Foreign Language Exam — English): <strong>93 / 100</strong> (Jul 2026) • KPSS: <strong>77</strong> (Sep 2026)</li>
+      <li><strong>Work Authorization &amp; Availability:</strong> Military service deferred until July 2028 • No travel restrictions • Available for full-time on-site, hybrid, or remote engineering roles.</li>
+    </ul>
+  </section>
+
+</body>
+</html>

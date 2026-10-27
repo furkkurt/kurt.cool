@@ -1,0 +1,331 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Navigation from '../components/Navigation.astro';
+import bgImage from '../assets/bg.jpg';
+
+const experiences = [
+	{
+		company: "208 Software Solutions",
+		role: "Frontend & Mobile Developer",
+		duration: "Dec 2025 – Present",
+		type: "Part-time · Remote",
+		bullets: [
+			"Architecting and maintaining cross-platform Flutter mobile applications and modular React / Next.js web frontends following Clean Architecture and Riverpod/Bloc state management.",
+			"Reduced runtime UI defects by ~70% across production builds by enforcing strict TypeScript & Dart static typing, reusable design-system components, and standardized error boundaries.",
+			"Implemented intelligent client-side REST API caching, optimistic UI updates, and skeleton loading states to improve perceived responsiveness on mobile networks."
+		]
+	},
+	{
+		company: "emeltek yazılım",
+		role: "Unity & 3D Simulation Developer",
+		duration: "Sep 2025 – Dec 2025",
+		type: "Internship · Elazığ",
+		bullets: [
+			"Developed an interactive VR Earthquake Drill & Rescue Training Simulation in Unity (C#) targeting standalone VR headsets with realistic physics, spatial audio, and hazard scenarios.",
+			"Profiled CPU/GPU bottlenecks and increased standalone VR frame rates from 24 FPS to a rock-solid 60 FPS (+150%) using GPU Instancing, static/dynamic batching, baked lightmaps, and collider decimation.",
+			"Built modular XR interaction state machines for emergency protocol evaluation (Drop-Cover-Hold, hazard identification, and safe evacuation scoring)."
+		]
+	},
+	{
+		company: "SmartMessage",
+		role: "Full-Stack Web Developer",
+		duration: "Jul 2025 – Sep 2025",
+		type: "Internship · Remote",
+		bullets: [
+			"Engineered a high-volume Turkish Medicines and Medical Devices Agency (TİTCK) pharmaceutical data query and verification platform using ASP.NET Core, C#, and SQL Server.",
+			"Reduced average API query latency by ~2,000 ms across large relational datasets via composite SQL indexing, execution plan optimization, and server-side pagination.",
+			"Contributed to enterprise frontend dashboards and automated data synchronization pipelines within an Agile Scrum workflow."
+		]
+	},
+	{
+		company: "Saksı Kampüs",
+		role: "Software Engineering Instructor",
+		duration: "May 2024 – Present",
+		type: "Freelance · Remote",
+		bullets: [
+			"Delivering university-level instruction in Formal Languages & Automata Theory (DFA, NFA, Regular Expressions, Context-Free Grammars, Pushdown Automata, and Turing Machines).",
+			"Mentoring Computer Science and Software Engineering students in Data Structures, Algorithms, Object-Oriented Programming, and exam preparation."
+		]
+	},
+	{
+		company: "Sia Teknoloji",
+		role: "Flutter Mobile Developer",
+		duration: "Sep 2024 – Oct 2024",
+		type: "Internship · Elazığ",
+		bullets: [
+			"Contributed to the cross-platform mobile architecture of libreQuiz, an interactive multiplayer trivia and educational quiz platform built with Flutter and Dart.",
+			"Implemented real-time room synchronization, live countdown timers, and responsive state transitions backed by RESTful and WebSocket services."
+		]
+	},
+	{
+		company: "AKİL Schools (AKİL Okulları)",
+		role: "Informatics & Robotics Instructor",
+		duration: "Jul 2023 – Sep 2023",
+		type: "Seasonal · Elazığ",
+		bullets: [
+			"Taught algorithmic thinking, Python programming fundamentals, and interactive game development workshops for K-12 students.",
+			"Designed hands-on project curricula introducing students to software logic and problem-solving."
+		]
+	},
+	{
+		company: "LAYZR.GG",
+		role: "Frontend Web Game Developer",
+		duration: "Apr 2023 – Sep 2023",
+		type: "Remote · Germany",
+		bullets: [
+			"Developed interactive browser game systems and real-time Twitch overlay features for Streamtopia within an international remote engineering team based in Germany.",
+			"Rapidly architected and shipped 20+ playable HTML5 / WebGL game prototypes using TypeScript, React, Next.js, and Phaser.js.",
+			"Collaborated closely with product designers and backend engineers to integrate real-time viewer interaction events and low-latency leaderboard updates."
+		]
+	},
+	{
+		company: "Twimh Games",
+		role: "Unity Level Designer & Editor Developer",
+		duration: "Oct 2022 – Feb 2023",
+		type: "Part-time · Remote",
+		bullets: [
+			"Built custom Unity Editor extensions, C# level-design tools, and scene validation scripts that streamlined asset placement and environment iteration.",
+			"Designed and balanced 3D game levels, lighting setups, and navigation meshes optimized for mobile and desktop targets."
+		]
+	},
+	{
+		company: "makinDAGames",
+		role: "Founder & Indie Game Developer",
+		duration: "Jul 2020 – Present",
+		type: "Independent Studio · makindagames.xyz",
+		bullets: [
+			"Founded an independent game studio and shipped 14+ complete mobile, desktop, and WebGL games across Google Play Store and itch.io, surpassing 1,000+ organic downloads.",
+			"Managed the full product lifecycle including custom gameplay programming (Unity C#, Rust/Macroquad, Three.js), shader authoring (HLSL/GLSL), procedural audio, UI/UX, and store publishing.",
+			"Maintains the studio web portal (makindagames.xyz) and open-source game development tooling."
+		]
+	}
+];
+---
+
+<Layout title="Experience - Furkan Kurt" description="Furkan Kurt's Professional Experience">
+	<Navigation />
+	
+	<!-- Background -->
+	<div id="page-bg">
+		<img src={bgImage.src} alt="" id="bg-image" />
+		<div class="overlay"></div>
+	</div>
+	
+	<div class="min-h-screen pt-20 relative">
+		<div class="max-w-4xl mx-auto px-6 py-12">
+			<div class="glass-strong p-8 mb-8">
+				<h1 class="text-4xl md:text-5xl font-black mb-4 text-center" style="color: white;">Experience</h1>
+				<p class="text-center secondary-text">Professional journey and work history</p>
+			</div>
+			
+			<div class="space-y-6">
+				{experiences.map((exp, index) => (
+					<div class="glass-soft p-8 hover:shadow-lg transition-shadow animate-slide-up" style={`animation-delay: ${index * 0.1}s`}>
+						<div class="flex justify-between items-start mb-4 flex-wrap gap-2">
+							<div>
+								<h3 class="text-2xl font-bold mb-1" style="color: white;">{exp.company}</h3>
+								<p class="text-lg secondary-text">{exp.role}</p>
+							</div>
+							<div class="text-right">
+								<p class="secondary-text">{exp.duration}</p>
+								{exp.type && <p class="text-sm secondary-text">({exp.type})</p>}
+							</div>
+						</div>
+						<ul class="space-y-2">
+							{exp.bullets.map(bullet => (
+								<li class="flex items-start gap-2">
+									<span class="mt-1" style="color: var(--accent-primary);">•</span>
+									<span class="secondary-text">{bullet}</span>
+								</li>
+							))}
+						</ul>
+					</div>
+				))}
+			</div>
+		</div>
+	</div>
+</Layout>
+
+<script>
+	// Speed-based drift + shake effect with dream-like zoom
+	(() => {
+		const img = document.getElementById('bg-image');
+		if (!img) return;
+
+		const MIN_SCALE = 1.0;
+		const MAX_SCALE = 1.22;
+		const MAX_Y = 55;
+		const MAX_X = 10;
+		const MAX_ROT = 0.6;
+		const SPEED_NORM = 1200;
+		const SMOOTH = 0.05;           // slower for trippy effect
+		const ZOOM_SMOOTH = 0.015;     // very slow zoom animation (trippy dream-like)
+
+		let lastY = window.scrollY;
+		let lastT = performance.now();
+		let scrollTimeout = null;
+		let isScrolling = false;
+
+		let targetX = 0, targetY = 0, targetRot = 0, targetScale = MIN_SCALE;
+		let x = 0, y = 0, rot = 0, scale = MIN_SCALE;
+
+		let phase = 0;
+		let raf = 0;
+
+		function clamp(v, a, b) { return Math.max(a, Math.min(b, v)); }
+		function lerp(a, b, t) { return a + (b - a) * t; }
+
+		function tick(now) {
+			const dy = window.scrollY - lastY;
+			const dt = Math.max(8, now - lastT);
+			lastY = window.scrollY;
+			lastT = now;
+
+			if (Math.abs(dy) > 0.5) {
+				isScrolling = true;
+				if (scrollTimeout) {
+					clearTimeout(scrollTimeout);
+					scrollTimeout = null;
+				}
+				scrollTimeout = setTimeout(() => {
+					isScrolling = false;
+				}, 150);
+			}
+
+			if (isScrolling) {
+				targetScale = MAX_SCALE;
+			} else {
+				targetScale = MIN_SCALE;
+			}
+
+			const v = (dy / dt) * 1000;
+			const speed = clamp(Math.abs(v) / SPEED_NORM, 0, 1);
+
+			targetY = clamp(-v * 0.02, -MAX_Y, MAX_Y);
+			phase += (0.08 + speed * 0.22);
+			const osc = Math.sin(phase) * (MAX_X * speed);
+			const jitter = (Math.random() - 0.5) * 2 * (MAX_X * 0.15 * speed);
+			targetX = clamp(osc + jitter, -MAX_X, MAX_X);
+			targetRot = clamp((Math.sin(phase * 0.7) * MAX_ROT) * speed, -MAX_ROT, MAX_ROT);
+
+			x = lerp(x, targetX, SMOOTH);
+			y = lerp(y, targetY, SMOOTH);
+			rot = lerp(rot, targetRot, SMOOTH);
+			scale = lerp(scale, targetScale, ZOOM_SMOOTH);
+
+			img.style.transform =
+				`translate(-50%, -50%) translate3d(${x}px, ${y}px, 0) rotate(${rot}deg) scale(${scale})`;
+
+			raf = requestAnimationFrame(tick);
+		}
+
+		raf = requestAnimationFrame(tick);
+
+		document.addEventListener('visibilitychange', () => {
+			if (document.hidden) cancelAnimationFrame(raf);
+			else {
+				lastY = window.scrollY;
+				lastT = performance.now();
+				raf = requestAnimationFrame(tick);
+			}
+		});
+	})();
+</script>
+
+<style>
+	#page-bg {
+		position: fixed;
+		inset: 0;
+		z-index: 0;
+		overflow: hidden;
+		pointer-events: none;
+	}
+	
+	#bg-image {
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+		transform: translate(-50%, -50%) scale(1.0);
+		will-change: transform;
+	}
+	
+	#page-bg {
+		position: fixed;
+		inset: 0;
+		z-index: 0;
+		overflow: hidden;
+		pointer-events: none;
+	}
+	
+	#bg-image {
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+		transform: translate(-50%, -50%) scale(1.0);
+		will-change: transform;
+		z-index: 1;
+	}
+	
+	#page-bg .overlay {
+		position: absolute;
+		inset: 0;
+		background-color: rgba(0, 0, 0, 0.68);
+		pointer-events: none;
+		z-index: 2;
+	}
+	
+	main, nav, section, footer {
+		position: relative;
+		z-index: 10;
+	}
+	
+	/* Glass overlay system with glow animation */
+	.glass-soft {
+		background: rgba(255, 255, 255, 0.12);
+		backdrop-filter: blur(12px);
+		border-radius: 1rem;
+		border: 1px solid rgba(255, 255, 255, 0.3);
+		box-shadow: 0 0 20px rgba(255, 255, 255, 0.1), 0 0 40px rgba(255, 255, 255, 0.05);
+		animation: card-glow-pulse 4s ease-in-out infinite;
+	}
+	
+	@keyframes card-glow-pulse {
+		0%, 100% {
+			box-shadow: 0 0 20px rgba(255, 255, 255, 0.1), 0 0 40px rgba(255, 255, 255, 0.05);
+		}
+		50% {
+			box-shadow: 0 0 25px rgba(255, 255, 255, 0.15), 0 0 50px rgba(255, 255, 255, 0.08), 0 0 60px rgba(255, 255, 255, 0.03);
+		}
+	}
+	
+	.glass-strong {
+		background: rgba(255, 255, 255, 0.18);
+		backdrop-filter: blur(16px);
+		border-radius: 1rem;
+		border: 1px solid rgba(255, 255, 255, 0.3);
+		box-shadow: 0 0 20px rgba(255, 255, 255, 0.15), 0 0 40px rgba(255, 255, 255, 0.08);
+		animation: card-glow-pulse-strong 4s ease-in-out infinite;
+	}
+	
+	@keyframes card-glow-pulse-strong {
+		0%, 100% {
+			box-shadow: 0 0 20px rgba(255, 255, 255, 0.15), 0 0 40px rgba(255, 255, 255, 0.08);
+		}
+		50% {
+			box-shadow: 0 0 30px rgba(255, 255, 255, 0.2), 0 0 60px rgba(255, 255, 255, 0.12), 0 0 80px rgba(255, 255, 255, 0.05);
+		}
+	}
+	
+	.secondary-text {
+		color: rgba(255, 255, 255, 0.65) !important;
+	}
+	.overlay-strong * {
+		color: white !important;
+	}
+</style>

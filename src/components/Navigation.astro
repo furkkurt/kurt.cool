@@ -1,0 +1,368 @@
+---
+import ThemeSwitcher from './ThemeSwitcher.astro';
+---
+
+<nav class="site-header fixed top-0 left-0 right-0 z-50 backdrop-blur-md border-b animate-slide-up" style="background: rgba(15, 23, 42, 0.5); backdrop-filter: blur(16px); border-bottom: 1px solid rgba(255, 255, 255, 0.1); position: fixed; top: 0; left: 0; right: 0; width: 100%;">
+	<div class="nav-inner max-w-6xl mx-auto px-4 md:px-6 py-4" style="display: flex; justify-content: space-between; align-items: center; width: 100%;">
+			<a href="/" class="text-lg md:text-xl font-extrabold transition-colors transform hover:scale-105 inline-block" style="color: white;">
+				Furkan<span class="header-underscore" style="color: var(--accent-primary);"> _ </span>Kurt
+			</a>
+			<div class="flex items-center gap-3 md:gap-4" style="position: relative; z-index: 102;">
+				<div class="hidden lg:block">
+					<ThemeSwitcher client:load />
+				</div>
+				<button 
+					id="mobile-menu-button" 
+					class="burger relative w-10 h-10 flex items-center justify-center transition-all duration-300 burger-button" 
+					aria-label="Toggle menu"
+					aria-expanded="false"
+					style="min-width: 40px; min-height: 40px; display: flex; z-index: 102; position: relative;"
+				>
+					<span class="burger-menu">
+						<span class="burger-line"></span>
+						<span class="burger-line"></span>
+						<span class="burger-line"></span>
+					</span>
+				</button>
+				<div id="nav-menu" class="hidden lg:flex gap-6 items-center">
+					<a href="/#projects" class="nav-link transition-colors relative font-medium tracking-wide" style="color: white; letter-spacing: 0.025em;">
+						Projects
+					</a>
+					<a href="/#experience" class="nav-link transition-colors relative font-medium tracking-wide" style="color: white; letter-spacing: 0.025em;">
+						Experience
+					</a>
+					<a href="/#about" class="nav-link transition-colors relative font-medium tracking-wide" style="color: white; letter-spacing: 0.025em;">
+						About
+					</a>
+					<a href="/#contact" class="nav-link transition-colors relative font-medium tracking-wide" style="color: white; letter-spacing: 0.025em;">
+						Contact
+					</a>
+					<a href="/cv" class="nav-link transition-colors relative font-medium tracking-wide" style="color: white; letter-spacing: 0.025em;">
+						CV
+					</a>
+				</div>
+			</div>
+		</div>
+		<!-- Mobile Menu Overlay -->
+		<div id="mobile-menu-overlay" class="mobile-menu-overlay hidden lg:hidden"></div>
+		<!-- Mobile Menu -->
+		<div id="mobile-menu" class="mobile-menu hidden lg:hidden">
+			<div class="mobile-menu-content">
+				<div class="mb-6">
+					<ThemeSwitcher client:load variant="inline" />
+				</div>
+				<a href="/#projects" class="mobile-nav-link">Projects</a>
+				<a href="/#experience" class="mobile-nav-link">Experience</a>
+				<a href="/#about" class="mobile-nav-link">About</a>
+				<a href="/#contact" class="mobile-nav-link">Contact</a>
+				<a href="/cv" class="mobile-nav-link">CV</a>
+			</div>
+		</div>
+	</div>
+</nav>
+
+<script>
+	const menuButton = document.getElementById('mobile-menu-button');
+	const mobileMenu = document.getElementById('mobile-menu');
+	const mobileMenuOverlay = document.getElementById('mobile-menu-overlay');
+	let isMenuOpen = false;
+	
+	function toggleMobileMenu() {
+		isMenuOpen = !isMenuOpen;
+		
+		if (menuButton) {
+			menuButton.setAttribute('aria-expanded', isMenuOpen.toString());
+			menuButton.classList.toggle('active', isMenuOpen);
+		}
+		
+		if (mobileMenu) {
+			mobileMenu.classList.toggle('hidden', !isMenuOpen);
+			mobileMenu.classList.toggle('menu-open', isMenuOpen);
+		}
+		
+		if (mobileMenuOverlay) {
+			mobileMenuOverlay.classList.toggle('hidden', !isMenuOpen);
+		}
+		
+		// Prevent body scroll when menu is open (desktop only - mobile needs native scroll)
+		if (isMenuOpen) {
+			// Only disable scroll on desktop
+			if (window.innerWidth > 768) {
+				document.body.style.overflow = 'hidden';
+			}
+		} else {
+			document.body.style.overflow = '';
+		}
+	}
+	
+	function closeMobileMenu() {
+		if (isMenuOpen) {
+			toggleMobileMenu();
+		}
+	}
+	
+	if (menuButton && mobileMenu) {
+		menuButton.addEventListener('click', toggleMobileMenu);
+		
+		if (mobileMenuOverlay) {
+			mobileMenuOverlay.addEventListener('click', closeMobileMenu);
+		}
+	}
+	
+	// Close menu on escape key
+	document.addEventListener('keydown', (e) => {
+		if (e.key === 'Escape' && isMenuOpen) {
+			closeMobileMenu();
+		}
+	});
+	
+	// Close menu when clicking on a link (for anchor links)
+	if (mobileMenu) {
+		mobileMenu.querySelectorAll('.mobile-nav-link').forEach(link => {
+			link.addEventListener('click', () => {
+				setTimeout(closeMobileMenu, 100);
+			});
+		});
+	}
+</script>
+
+<style>
+	.nav-link {
+		position: relative;
+		padding-bottom: 2px;
+	}
+	
+	.nav-link::after {
+		content: "";
+		position: absolute;
+		left: 0;
+		bottom: -6px;
+		width: 0;
+		height: 2px;
+		background: var(--accent-primary);
+		transition: width 0.2s ease;
+	}
+	
+	.nav-link:hover::after,
+	.nav-link:focus::after {
+		width: 100%;
+	}
+	
+	/* Active nav link - show underline */
+	.nav-link.active::after {
+		width: 100%;
+	}
+	
+	/* Header underscore terminal-style blink animation */
+	.header-underscore {
+		animation: underscore-blink 1s step-end infinite;
+	}
+	
+	@keyframes underscore-blink {
+		0%, 49% {
+			opacity: 1;
+			text-shadow: 0 0 10px var(--accent-primary), 0 0 20px var(--accent-primary), 0 0 30px var(--accent-primary);
+		}
+		50%, 100% {
+			opacity: 0;
+			text-shadow: none;
+		}
+	}
+	
+	/* Site Header - Full Width */
+	.site-header {
+		position: fixed;
+		inset: 0 0 auto 0;
+		top: 0;
+		z-index: 9999;
+		width: 100%;
+		overflow: visible;
+		transform: translateZ(0); /* creates its own compositor layer */
+		isolation: isolate; /* prevents child transforms from leaking upward */
+	}
+	
+	.nav-inner {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		width: 100%;
+		max-width: 1200px;
+		margin: 0 auto;
+		padding: 0.75rem 1rem;
+		position: relative;
+		z-index: 101;
+	}
+	
+	/* Burger Menu Button */
+	.burger-button {
+		background: transparent;
+		border: none;
+		cursor: pointer;
+		padding: 0;
+		margin: 0;
+		position: relative;
+		display: none;
+	}
+	
+	/* Burger rules (mobile only) */
+	@media (max-width: 1023px) {
+		.burger-button {
+			display: flex !important;
+			visibility: visible !important;
+			opacity: 1 !important;
+		}
+	}
+	
+	@media (min-width: 1024px) {
+		.burger-button {
+			display: none !important;
+		}
+	}
+	
+	/* Burger Menu Styles */
+	.burger-menu {
+		display: flex;
+		flex-direction: column;
+		justify-content: space-between;
+		width: 24px;
+		height: 18px;
+		position: relative;
+	}
+	
+	.burger-line {
+		display: block;
+		width: 100%;
+		height: 2.5px;
+		background-color: white;
+		border-radius: 2px;
+		transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+		transform-origin: center;
+		box-shadow: 0 0 2px rgba(0, 0, 0, 0.3);
+	}
+	
+	.burger-button:hover .burger-line,
+	.burger-button:focus .burger-line {
+		background-color: var(--accent-primary);
+		box-shadow: 0 0 4px var(--accent-primary);
+	}
+	
+	/* Burger to X animation */
+	#mobile-menu-button.active .burger-line:nth-child(1) {
+		transform: translateY(8px) rotate(45deg);
+	}
+	
+	#mobile-menu-button.active .burger-line:nth-child(2) {
+		opacity: 0;
+		transform: scaleX(0);
+	}
+	
+	#mobile-menu-button.active .burger-line:nth-child(3) {
+		transform: translateY(-8px) rotate(-45deg);
+	}
+	
+	/* Mobile Menu Overlay */
+	.mobile-menu-overlay {
+		position: fixed;
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		background: rgba(0, 0, 0, 0.7);
+		backdrop-filter: blur(4px);
+		z-index: 40;
+		opacity: 0;
+		transition: opacity 0.3s ease;
+	}
+	
+	.mobile-menu-overlay:not(.hidden) {
+		opacity: 1;
+	}
+	
+	/* Mobile Menu */
+	.mobile-menu {
+		position: fixed;
+		top: 0;
+		right: 0;
+		width: 85%;
+		max-width: 320px;
+		height: 100vh;
+		background: rgba(15, 23, 42, 0.98);
+		backdrop-filter: blur(20px);
+		border-left: 1px solid rgba(255, 255, 255, 0.1);
+		z-index: 45;
+		transform: translateX(100%);
+		transition: transform 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+		box-shadow: -10px 0 30px rgba(0, 0, 0, 0.5);
+	}
+	
+	.mobile-menu.menu-open {
+		transform: translateX(0);
+	}
+	
+	.mobile-menu-content {
+		padding: 5rem 2rem 2rem;
+		display: flex;
+		flex-direction: column;
+		gap: 1rem;
+		height: 100%;
+		overflow-y: auto;
+	}
+	
+	.mobile-nav-link {
+		display: block;
+		padding: 1rem 1.25rem;
+		color: white;
+		font-size: 1.125rem;
+		font-weight: 500;
+		border-radius: 0.5rem;
+		transition: all 0.2s ease;
+		position: relative;
+		overflow: hidden;
+	}
+	
+	.mobile-nav-link::before {
+		content: "";
+		position: absolute;
+		left: 0;
+		top: 0;
+		width: 3px;
+		height: 100%;
+		background: var(--accent-primary);
+		transform: scaleY(0);
+		transition: transform 0.2s ease;
+	}
+	
+	.mobile-nav-link:hover,
+	.mobile-nav-link:focus {
+		background: rgba(255, 255, 255, 0.05);
+		transform: translateX(4px);
+	}
+	
+	.mobile-nav-link:hover::before,
+	.mobile-nav-link:focus::before {
+		transform: scaleY(1);
+	}
+	
+	/* Smooth scroll for mobile menu */
+	.mobile-menu-content {
+		scrollbar-width: thin;
+		scrollbar-color: rgba(255, 255, 255, 0.2) transparent;
+	}
+	
+	.mobile-menu-content::-webkit-scrollbar {
+		width: 6px;
+	}
+	
+	.mobile-menu-content::-webkit-scrollbar-track {
+		background: transparent;
+	}
+	
+	.mobile-menu-content::-webkit-scrollbar-thumb {
+		background: rgba(255, 255, 255, 0.2);
+		border-radius: 3px;
+	}
+	
+	.mobile-menu-content::-webkit-scrollbar-thumb:hover {
+		background: rgba(255, 255, 255, 0.3);
+	}
+</style>
